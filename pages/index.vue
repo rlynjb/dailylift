@@ -1,0 +1,107 @@
+<template>
+  <div class="index-page">
+    <div class="header">
+      <h3>Daily Lift</h3>
+      
+      <div class="text-right">
+        add
+      </div>
+    </div>
+
+    <div class="filter">
+      filter or sorting feature
+    </div>
+
+    <div class="main">
+      <div class="main-card"
+        v-for="(exercise, exerciseIndex) in exercises" :key="'e'+exerciseIndex">
+        <ImageField :src="exercise.media" />
+
+        <h2 class="main-title">
+          {{ exercise.name }}
+        </h2>
+
+        <div class="main-content">
+          <h6 class="main-content__label">Sets</h6>
+          <InputField
+            class="main-content__input"
+            :val="exercise.sets.set1" />
+          <InputField
+            class="main-content__input"
+            :val="exercise.sets.set2" />
+          <InputField
+            class="main-content__input"
+            :val="exercise.sets.set3" />
+
+          <h6 class="main-content__label">Time</h6>
+          <InputField class="main-content__input" />
+          <InputField class="main-content__input" />
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
+  name: 'IndexPage',
+  data: () => {
+    return {
+      exercises: [
+        {
+          media: 'https://place-hold.it/300',
+          name: 'workout 1',
+          sets: {
+            set1: '12',
+            set2: '12',
+            set3: '13',
+          },
+          minutes: '0',
+          seconds: '0'
+        },
+        {
+          media: 'https://place-hold.it/300',
+          name: 'workout 2',
+          sets: {
+            set1: '12',
+            set2: '12',
+            set3: '12',
+          },
+          minutes: '0',
+          seconds: '0'
+        }
+      ],
+    }
+  },
+})
+</script>
+
+<style lang="postcss">
+.header {
+  @apply grid grid-cols-2 justify-between p-4 bg-black text-white;
+}
+.filter {
+  @apply p-4;
+}
+.main {
+  @apply grid grid-cols-4 gap-5 p-4;
+}
+.main-card {
+  @apply p-4 bg-primary;
+}
+.main-title {
+  @apply mt-1 mb-1;
+  font-size: 1.4em;
+}
+.main-content {
+  @apply grid grid-cols-3 gap-3;
+}
+.main-content__label {
+  @apply col-span-3;
+}
+.main-content__input {
+  @apply col-span-1;
+}
+</style>
