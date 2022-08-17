@@ -8,11 +8,18 @@
       </div>
     </div>
 
+    <div class="top-workouts">
+      <h3>Top fave 4</h3>
+    </div>
+
     <div class="filter">
       filter or sorting feature
     </div>
 
     <div class="main">
+      <div class="main-header">
+        <h3>Workouts</h3>
+      </div>
       <div class="main-card"
         v-for="(exercise, exerciseIndex) in exercises" :key="'e'+exerciseIndex">
         <ImageField :src="exercise.media" />
@@ -44,36 +51,18 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { Workouts } from '../lib/data'
 
 export default Vue.extend({
   name: 'IndexPage',
   data: () => {
     return {
-      exercises: [
-        {
-          media: 'https://place-hold.it/300',
-          name: 'workout 1',
-          sets: {
-            set1: '12',
-            set2: '12',
-            set3: '13',
-          },
-          minutes: '0',
-          seconds: '0'
-        },
-        {
-          media: 'https://place-hold.it/300',
-          name: 'workout 2',
-          sets: {
-            set1: '12',
-            set2: '12',
-            set3: '12',
-          },
-          minutes: '0',
-          seconds: '0'
-        }
-      ],
+      exercises: [],
     }
+  },
+
+  mounted():void {
+    this.exercises = Workouts
   },
 })
 </script>
@@ -87,6 +76,9 @@ export default Vue.extend({
 }
 .main {
   @apply grid grid-cols-4 gap-5 p-4;
+}
+.main-header {
+  @apply col-span-4;
 }
 .main-card {
   @apply p-4 bg-primary;
