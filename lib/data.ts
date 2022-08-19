@@ -28,7 +28,7 @@ export const Workouts: IWorkout[] = [
   {
     image: '',
     name: 'Kettlebell Cleans',
-    muscles: '',
+    muscles: 'quads, core, glutes, triceps, hamstrings, lower back muscles',
     sets: {
       set1: '8 - 6k',
       set2: '8 - 6k',
@@ -36,5 +36,29 @@ export const Workouts: IWorkout[] = [
     },
     minutes: '0',
     seconds: '0'
-  }
+  },
+  {
+    image: '',
+    name: 'Kettlebell Get Ups',
+    muscles: '',
+    sets: {
+      set1: '6 - 4k',
+      set2: '6 - 4k',
+      set3: '',
+    },
+    minutes: '0',
+    seconds: '0'
+  },
+  {
+    image: '',
+    name: 'Kettlebell Deadlift to Row',
+    muscles: '',
+    sets: {
+      set1: '8 - 8k',
+      set2: '8 - 8k',
+      set3: '',
+    },
+    minutes: '0',
+    seconds: '0'
+  },
 ];
