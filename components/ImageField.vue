@@ -1,6 +1,6 @@
 <template>
   <div class="image-field">
-    <img :src="src" />
+    <img :src="require(`~/assets/images/${src}`)" />
   </div>
 </template>
 

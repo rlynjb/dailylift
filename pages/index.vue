@@ -3,29 +3,33 @@
     <div class="header">
       <h3>Daily Lift</h3>
       
+      <!--
       <div class="text-right">
         add
       </div>
+      -->
     </div>
 
+    <!--
     <div class="top-workouts">
       <h3>Top fave 4</h3>
     </div>
+    -->
 
+    <!--
     <div class="filter">
       filter or sorting feature
     </div>
+    -->
 
     <div class="main">
-      <div class="main-header">
-        <h3>Workouts</h3>
-      </div>
       <div class="main-card"
         v-for="(exercise, exerciseIndex) in exercises" :key="'e'+exerciseIndex">
         <ImageField :src="exercise.media" />
 
         <h2 class="main-title">
           {{ exercise.name }}
+          <small>{{ exercise.muscles }}</small>
         </h2>
 
         <div class="main-content">
@@ -51,7 +55,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { Workouts } from '../lib/data'
+import { Workouts } from '~/lib/data'
 
 export default Vue.extend({
   name: 'IndexPage',
@@ -77,15 +81,18 @@ export default Vue.extend({
 .main {
   @apply grid grid-cols-4 gap-5 p-4;
 }
-.main-header {
-  @apply col-span-4;
-}
 .main-card {
   @apply p-4 bg-primary;
 }
 .main-title {
-  @apply mt-1 mb-1;
+  @apply mt-4 mb-4;
   font-size: 1.4em;
+  line-height: 1;
+}
+.main-title small {
+  @apply mt-1;
+  font-size: 0.5em;
+  display: block;
 }
 .main-content {
   @apply grid grid-cols-3 gap-3;

@@ -1,9 +1,10 @@
-//import { Workout } from '../types/index'
+import { IWorkout, IWorkouts } from '~/types/index'
 
-export const Workouts = [
+export const Workouts: IWorkout[] = [
   {
-    media: 'https://place-hold.it/300',
+    media: 'kirby.jpg',
     name: 'workout 1',
+    muscles: 'biceps',
     sets: {
       set1: '12',
       set2: '12',
@@ -13,8 +14,9 @@ export const Workouts = [
     seconds: '0'
   },
   {
-    media: 'https://place-hold.it/300',
+    media: 'kirby.jpg',
     name: 'workout 2',
+    muscles: 'triceps',
     sets: {
       set1: '12',
       set2: '12',
