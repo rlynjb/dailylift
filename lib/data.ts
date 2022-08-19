@@ -2,25 +2,37 @@ import { IWorkout, IWorkouts } from '~/types/index'
 
 export const Workouts: IWorkout[] = [
   {
-    media: 'kirby.jpg',
-    name: 'workout 1',
-    muscles: 'biceps',
+    image: 'kettlebell-sumo-y-remo-al-cuello-2890.png',
+    name: 'Sumo/Upright Squat',
+    muscles: 'adductors, glutes, quads, hamstrings, calves, hip flexors, core',
     sets: {
-      set1: '12',
-      set2: '12',
-      set3: '13',
+      set1: '8 - 8k',
+      set2: '8 - 8k',
+      set3: '8 - 8k',
     },
     minutes: '0',
     seconds: '0'
   },
   {
-    media: 'kirby.jpg',
-    name: 'workout 2',
-    muscles: 'triceps',
+    image: 'image_iphone.jpeg',
+    name: 'Plank Pass Through',
+    muscles: 'Upper Abs, Lower Abs, Left Obliques, Right Obliques, Transverse Abdominis, Hip Flexors, Adductors',
     sets: {
-      set1: '12',
-      set2: '12',
-      set3: '12',
+      set1: '8 - 6k',
+      set2: '8 - 6k',
+      set3: '8 - 6k',
+    },
+    minutes: '0',
+    seconds: '0'
+  },
+  {
+    image: '',
+    name: 'Kettlebell Cleans',
+    muscles: '',
+    sets: {
+      set1: '8 - 6k',
+      set2: '8 - 6k',
+      set3: '',
     },
     minutes: '0',
     seconds: '0'

@@ -1,7 +1,7 @@
 export interface IWorkout {
   name: string,
   muscles: string,
-  media: string,
+  image: string,
   sets: ISets,
   minutes: string,
   seconds: string,

@@ -25,7 +25,7 @@
     <div class="main">
       <div class="main-card"
         v-for="(exercise, exerciseIndex) in exercises" :key="'e'+exerciseIndex">
-        <ImageField :src="exercise.media" />
+        <ImageField :src="exercise.image" />
 
         <h2 class="main-title">
           {{ exercise.name }}
@@ -33,7 +33,7 @@
         </h2>
 
         <div class="main-content">
-          <h6 class="main-content__label">Sets</h6>
+          <h6 class="main-content__label">Sets - Weight</h6>
           <InputField
             class="main-content__input"
             :val="exercise.sets.set1" />

@@ -1,6 +1,7 @@
 <template>
   <div class="image-field">
-    <img :src="require(`~/assets/images/${src}`)" />
+    <img v-if="src" :src="require(`~/assets/images/${src}`)" />
+    <img v-else src="~/assets/images/kirby.jpg" />
   </div>
 </template>
 
