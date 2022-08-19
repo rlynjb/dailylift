@@ -61,12 +61,8 @@ export default Vue.extend({
   name: 'IndexPage',
   data: () => {
     return {
-      exercises: [],
+      exercises: Workouts,
     }
-  },
-
-  mounted():void {
-    this.exercises = Workouts
   },
 })
 </script>
