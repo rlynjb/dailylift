@@ -26,7 +26,7 @@ export const Workouts: IWorkout[] = [
     seconds: '0'
   },
   {
-    image: '',
+    image: '62_double_clean_and_press.png',
     name: 'Kettlebell Cleans',
     muscles: 'quads, core, glutes, triceps, hamstrings, lower back muscles',
     sets: {
@@ -38,9 +38,9 @@ export const Workouts: IWorkout[] = [
     seconds: '0'
   },
   {
-    image: '',
+    image: 'kettlebell_turkish_get_up.png',
     name: 'Kettlebell Get Ups',
-    muscles: '',
+    muscles: 'glutes, traps, lower-back muscles, hamstrings, triceps, lats, calves',
     sets: {
       set1: '6 - 4k',
       set2: '6 - 4k',
@@ -50,12 +50,180 @@ export const Workouts: IWorkout[] = [
     seconds: '0'
   },
   {
-    image: '',
+    image: '5-1-H-Kettlebell-Bent-Over-Row.png',
     name: 'Kettlebell Deadlift to Row',
-    muscles: '',
+    muscles: 'upper and lower back, abdominals, glutes and quadriceps, increases trunk stability',
     sets: {
       set1: '8 - 8k',
       set2: '8 - 8k',
+      set3: '',
+    },
+    minutes: '0',
+    seconds: '0'
+  },
+  {
+    image: '2-1-H-Kettlebell-Single-Arm-Deadlift.png',
+    name: 'Kettlebell Single Arm Deadlift',
+    muscles: '',
+    sets: {
+      set1: '',
+      set2: '',
+      set3: '',
+    },
+    minutes: '0',
+    seconds: '0'
+  },
+  {
+    image: '',
+    name: 'Kettlebell Overhead Press',
+    muscles: '',
+    sets: {
+      set1: '',
+      set2: '',
+      set3: '',
+    },
+    minutes: '0',
+    seconds: '0'
+  },
+  {
+    image: '',
+    name: 'Kettlebell Deadswing',
+    muscles: '',
+    sets: {
+      set1: '',
+      set2: '',
+      set3: '',
+    },
+    minutes: '0',
+    seconds: '0'
+  },
+  {
+    image: '',
+    name: 'Kettlebell Lunges',
+    muscles: '',
+    sets: {
+      set1: '',
+      set2: '',
+      set3: '',
+    },
+    minutes: '0',
+    seconds: '0'
+  },
+  {
+    image: '',
+    name: 'Kettlebell Halos',
+    muscles: '',
+    sets: {
+      set1: '',
+      set2: '',
+      set3: '',
+    },
+    minutes: '0',
+    seconds: '0'
+  },
+  {
+    image: '',
+    name: 'Kettlebell Around the World',
+    muscles: '',
+    sets: {
+      set1: '',
+      set2: '',
+      set3: '',
+    },
+    minutes: '0',
+    seconds: '0'
+  },
+  {
+    image: '',
+    name: 'Bicep curl 21s',
+    muscles: '',
+    sets: {
+      set1: '',
+      set2: '',
+      set3: '',
+    },
+    minutes: '0',
+    seconds: '0'
+  },
+  {
+    image: '',
+    name: 'Sled Row/Tugs',
+    muscles: '',
+    sets: {
+      set1: '',
+      set2: '',
+      set3: '',
+    },
+    minutes: '0',
+    seconds: '0'
+  },
+  {
+    image: '',
+    name: 'Tricep Burnout',
+    muscles: '',
+    sets: {
+      set1: '',
+      set2: '',
+      set3: '',
+    },
+    minutes: '0',
+    seconds: '0'
+  },
+  {
+    image: '',
+    name: 'Flip Grip Kickback',
+    muscles: '',
+    sets: {
+      set1: '',
+      set2: '',
+      set3: '',
+    },
+    minutes: '0',
+    seconds: '0'
+  },
+  {
+    image: '',
+    name: '2 way Shoulder Raise',
+    muscles: '',
+    sets: {
+      set1: '',
+      set2: '',
+      set3: '',
+    },
+    minutes: '0',
+    seconds: '0'
+  },
+  {
+    image: '',
+    name: 'Step up / reverse',
+    muscles: '',
+    sets: {
+      set1: '',
+      set2: '',
+      set3: '',
+    },
+    minutes: '0',
+    seconds: '0'
+  },
+  {
+    image: '',
+    name: 'Sled/Walking Lunge',
+    muscles: '',
+    sets: {
+      set1: '',
+      set2: '',
+      set3: '',
+    },
+    minutes: '0',
+    seconds: '0'
+  },
+  {
+    image: '',
+    name: 'Slider reverse crunch plank',
+    muscles: '',
+    sets: {
+      set1: '',
+      set2: '',
       set3: '',
     },
     minutes: '0',
