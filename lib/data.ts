@@ -64,7 +64,7 @@ export const Workouts: IWorkout[] = [
   {
     image: '2-1-H-Kettlebell-Single-Arm-Deadlift.png',
     name: 'Kettlebell Single Arm Deadlift',
-    muscles: '',
+    muscles: 'Quadriceps, Hamstrings, Glutes, Adductors, Erector Spinae, Trapezius, Lower back, Forearms, Core',
     sets: {
       set1: '',
       set2: '',
@@ -76,7 +76,7 @@ export const Workouts: IWorkout[] = [
   {
     image: '',
     name: 'Kettlebell Overhead Press',
-    muscles: '',
+    muscles: 'deltoids, upper pectorals, triceps',
     sets: {
       set1: '',
       set2: '',
@@ -87,8 +87,8 @@ export const Workouts: IWorkout[] = [
   },
   {
     image: '',
-    name: 'Kettlebell Deadswing',
-    muscles: '',
+    name: 'Kettlebell Dead Swing',
+    muscles: 'glutes, hamstrings, spinal erectors, and muscles of the upper back',
     sets: {
       set1: '',
       set2: '',

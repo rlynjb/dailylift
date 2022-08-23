@@ -10,44 +10,39 @@
       -->
     </div>
 
-    <!--
-    <div class="top-workouts">
-      <h3>Top fave 4</h3>
+    <div class="todays-workout">
+      <h3>Today's Workout</h3>
     </div>
-    -->
 
     <!--
-    <div class="filter">
-      filter or sorting feature
+    <div class="options">
+      <div class="filter">
+        reset
+        <h6>Filter by:</h6>
+        <div class="main-muscles">
+          <a class="main-muscles__btn" @click="filter">Hamstrings</a>
+          <a class="main-muscles__btn" @click="filter">Calves</a>
+          <a class="main-muscles__btn" @click="filter">Chest</a>
+          <a class="main-muscles__btn" @click="filter">Back</a>
+          <a class="main-muscles__btn" @click="filter">Shoulders</a>
+          <a class="main-muscles__btn" @click="filter">Triceps</a>
+          <a class="main-muscles__btn" @click="filter">Biceps</a>
+          <a class="main-muscles__btn" @click="filter">Forearms</a>
+          <a class="main-muscles__btn" @click="filter">Trapezius</a>
+          <a class="main-muscles__btn" @click="filter('core, oblique, upper abs')">Abs</a>
+        </div>
+      </div>
+
+      <div class="views">
+        list, card
+      </div>
     </div>
     -->
 
     <div class="main">
       <div class="main-card"
         v-for="(exercise, exerciseIndex) in exercises" :key="'e'+exerciseIndex">
-        <ImageField :src="exercise.image" />
-
-        <h2 class="main-title">
-          {{ exercise.name }}
-          <small>{{ exercise.muscles }}</small>
-        </h2>
-
-        <div class="main-content">
-          <h6 class="main-content__label">Sets - Weight</h6>
-          <InputField
-            class="main-content__input"
-            :val="exercise.sets.set1" />
-          <InputField
-            class="main-content__input"
-            :val="exercise.sets.set2" />
-          <InputField
-            class="main-content__input"
-            :val="exercise.sets.set3" />
-
-          <h6 class="main-content__label">Time</h6>
-          <InputField class="main-content__input" />
-          <InputField class="main-content__input" />
-        </div>
+        <WorkoutCard :exercise="exercise" />
       </div>
     </div>
   </div>
@@ -62,7 +57,14 @@ export default Vue.extend({
   data: () => {
     return {
       exercises: Workouts,
+      todaysWorkout: [],
     }
+  },
+
+  methods: {
+    filter(val: string = '') {
+      console.log('filter', val)
+    },
   },
 })
 </script>
@@ -71,32 +73,26 @@ export default Vue.extend({
 .header {
   @apply grid grid-cols-2 justify-between p-4 bg-black text-white;
 }
+.todays-workout {
+  @apply grid grid-cols-4 p-4;
+}
+.options {
+  @apply grid grid-cols-2;
+}
 .filter {
-  @apply p-4;
+  @apply p-4 col-span-1;
+}
+.views {
+  @apply p-4 col-span-1;
 }
 .main {
   @apply grid grid-cols-4 gap-5 p-4;
 }
-.main-card {
-  @apply p-4 bg-primary;
+.main-muscles {
+  display: inline-block;
 }
-.main-title {
-  @apply mt-4 mb-4;
-  font-size: 1.4em;
-  line-height: 1;
-}
-.main-title small {
-  @apply mt-1;
-  font-size: 0.5em;
-  display: block;
-}
-.main-content {
-  @apply grid grid-cols-3 gap-3;
-}
-.main-content__label {
-  @apply col-span-3;
-}
-.main-content__input {
-  @apply col-span-1;
+.main-muscles__btn {
+  font-size: 0.9em;
+  cursor: pointer;
 }
 </style>
