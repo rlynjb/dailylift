@@ -1,29 +1,27 @@
 <template>
-  <div class="workout-card main-card">
-    <h2 class="main-title">
+  <div class="workout-card">
+    <h2 class="workout-card__title">
       {{ exercise.name }}
       <small>{{ exercise.muscles }}</small>
     </h2>
 
-    <a class="main-addWorkout">+</a>
+    <ImageField class="workout-card__image" :src="exercise.image" />
 
-    <ImageField class="main-image" :src="exercise.image" />
-
-    <div class="main-content">
-      <h6 class="main-content__label">Sets - Weight</h6>
+    <div class="workout-card__content">
+      <h6 class="workout-card__label">Sets - Weight</h6>
       <InputField
-        class="main-content__input"
+        class="workout-card__input"
         :val="exercise.sets.set1" />
       <InputField
-        class="main-content__input"
+        class="workout-card__input"
         :val="exercise.sets.set2" />
       <InputField
-        class="main-content__input"
+        class="workout-card__input"
         :val="exercise.sets.set3" />
 
-      <h6 class="main-content__label">Time</h6>
-      <InputField class="main-content__input" />
-      <InputField class="main-content__input" />
+      <h6 class="workout-card__label">Time</h6>
+      <InputField class="workout-card__input" />
+      <InputField class="workout-card__input" />
     </div>
   </div>
 </template>
@@ -39,32 +37,29 @@ export default Vue.extend({
 </script>
 
 <style lang="postcss" scoped>
-.main-card {
+.workout-card {
   @apply grid grid-cols-12 p-4 bg-primary;
 }
-.main-title {
+.workout-card__title {
   @apply col-span-10 mb-4;
   font-size: 1.4em;
   line-height: 1;
 }
-.main-title small {
+.workout-card__title small {
   @apply mt-1;
   font-size: 0.5em;
   display: block;
 }
-.main-addWorkout {
-  @apply col-span-2;
-}
-.main-image {
+.workout-card__image {
   @apply col-span-12;
 }
-.main-content {
+.workout-card__content {
   @apply col-span-12 grid grid-cols-3 gap-3;
 }
-.main-content__label {
+.workout-card__label {
   @apply col-span-3;
 }
-.main-content__input {
+.workout-card__input {
   @apply col-span-1;
 }
 </style>

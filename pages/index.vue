@@ -12,6 +12,11 @@
 
     <div class="todays-workout">
       <h3>Today's Workout</h3>
+      <div class="todays-workout__item"
+        v-for="(exercise, exerciseIndex) in todaysWorkout" :key="'e'+exerciseIndex">
+        <a class="main-addWorkout" @click="unsetWorkout(exerciseIndex)">-</a>
+        <WorkoutCard :exercise="exercise" />
+      </div>
     </div>
 
     <!--
@@ -40,8 +45,9 @@
     -->
 
     <div class="main">
-      <div class="main-card"
+      <div class=""
         v-for="(exercise, exerciseIndex) in exercises" :key="'e'+exerciseIndex">
+        <a class="main-addWorkout" @click="setWorkout(exercise)">+</a>
         <WorkoutCard :exercise="exercise" />
       </div>
     </div>
@@ -65,6 +71,12 @@ export default Vue.extend({
     filter(val: string = '') {
       console.log('filter', val)
     },
+    setWorkout(val) {
+      this.todaysWorkout.push(val);
+    },
+    unsetWorkout(index) {
+      this.todaysWorkout.splice(index, 1);
+    },
   },
 })
 </script>
@@ -74,7 +86,21 @@ export default Vue.extend({
   @apply grid grid-cols-2 justify-between p-4 bg-black text-white;
 }
 .todays-workout {
-  @apply grid grid-cols-4 p-4;
+  @apply grid sm:grid-cols-2 lg:grid-cols-4 gap-5 p-4;
+}
+.todays-workout h3 {
+  @apply col-span-4;
+}
+.todays-workout__item {
+  @apply col-span-1;
+}
+.main-addWorkout {
+  background: #000;
+  color: #fff;
+  display: block;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
 }
 .options {
   @apply grid grid-cols-2;
@@ -86,7 +112,7 @@ export default Vue.extend({
   @apply p-4 col-span-1;
 }
 .main {
-  @apply grid grid-cols-4 gap-5 p-4;
+  @apply grid sm:grid-cols-2 lg:grid-cols-4 gap-5 p-4;
 }
 .main-muscles {
   display: inline-block;
