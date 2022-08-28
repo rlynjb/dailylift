@@ -14,7 +14,7 @@
       <h3>Today's Workout</h3>
       <div class="todays-workout__item"
         v-for="(exercise, exerciseIndex) in todaysWorkout" :key="'e'+exerciseIndex">
-        <a class="main-addWorkout" @click="unsetWorkout(exerciseIndex)">-</a>
+        <a class="main-unsetWorkoutBtn" @click="unsetWorkout(exerciseIndex)">-</a>
         <WorkoutCard :exercise="exercise" />
       </div>
     </div>
@@ -47,7 +47,7 @@
     <div class="main">
       <div class=""
         v-for="(exercise, exerciseIndex) in exercises" :key="'e'+exerciseIndex">
-        <a class="main-addWorkout" @click="setWorkout(exercise)">+</a>
+        <a class="main-setWorkoutBtn" @click="setWorkout(exercise)">+</a>
         <WorkoutCard :exercise="exercise" />
       </div>
     </div>
@@ -63,7 +63,7 @@ export default Vue.extend({
   data: () => {
     return {
       exercises: Workouts,
-      todaysWorkout: [],
+      todaysWorkout: [] as Object[],
     }
   },
 
@@ -71,10 +71,10 @@ export default Vue.extend({
     filter(val: string = '') {
       console.log('filter', val)
     },
-    setWorkout(val) {
+    setWorkout(val: Object) {
       this.todaysWorkout.push(val);
     },
-    unsetWorkout(index) {
+    unsetWorkout(index: number) {
       this.todaysWorkout.splice(index, 1);
     },
   },
@@ -94,13 +94,16 @@ export default Vue.extend({
 .todays-workout__item {
   @apply col-span-1;
 }
-.main-addWorkout {
+.main-setWorkoutBtn {
   background: #000;
   color: #fff;
   display: block;
   width: 100%;
   text-align: center;
   cursor: pointer;
+}
+.main-unsetWorkoutBtn {
+  background: red;
 }
 .options {
   @apply grid grid-cols-2;
