@@ -48,7 +48,7 @@ export default Vue.extend({
 .workout-card__title {
   @apply col-span-3 mb-4;
   font-size: 1.4em;
-  line-height: 1;
+  line-height: 1.3;
 }
 .workout-card__title small {
   @apply mt-1;
