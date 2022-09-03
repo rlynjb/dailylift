@@ -1,13 +1,12 @@
 <template>
   <div class="workout-card">
-    <h2 class="workout-card__title">
-      {{ exercise.name }}
-      <small>{{ exercise.muscles }}</small>
-    </h2>
-
     <ImageField class="workout-card__image" :src="exercise.image" />
 
     <div class="workout-card__content">
+      <h2 class="workout-card__title">
+        {{ exercise.name }}
+        <small>{{ exercise.muscles }}</small>
+      </h2>
       <h6 class="workout-card__label">Sets - Weight</h6>
       <InputField
         class="workout-card__input"
@@ -38,10 +37,16 @@ export default Vue.extend({
 
 <style lang="postcss" scoped>
 .workout-card {
-  @apply grid grid-cols-12 p-4 bg-primary;
+  @apply grid grid-cols-12 p-4 gap-3 bg-primary;
+}
+.workout-card__image {
+  @apply col-span-6;
+}
+.workout-card__content {
+  @apply col-span-6 grid grid-cols-3 gap-3;
 }
 .workout-card__title {
-  @apply col-span-10 mb-4;
+  @apply col-span-3 mb-4;
   font-size: 1.4em;
   line-height: 1;
 }
@@ -49,12 +54,6 @@ export default Vue.extend({
   @apply mt-1;
   font-size: 0.5em;
   display: block;
-}
-.workout-card__image {
-  @apply col-span-12;
-}
-.workout-card__content {
-  @apply col-span-12 grid grid-cols-3 gap-3;
 }
 .workout-card__label {
   @apply col-span-3;

@@ -1,4 +1,5 @@
 export interface IWorkout {
+  id: string,
   name: string,
   muscles: string,
   image: string,

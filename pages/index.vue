@@ -10,8 +10,8 @@
       -->
     </div>
 
+    <h3 class="todays-workout__title">Today's Workout</h3>
     <div class="todays-workout">
-      <h3>Today's Workout</h3>
       <div class="todays-workout__item"
         v-for="(exercise, exerciseIndex) in todaysWorkout" :key="'e'+exerciseIndex">
         <a class="main-unsetWorkoutBtn" @click="unsetWorkout(exerciseIndex)">-</a>
@@ -45,9 +45,13 @@
     -->
 
     <div class="main">
-      <div class=""
+      <div
         v-for="(exercise, exerciseIndex) in exercises" :key="'e'+exerciseIndex">
-        <a class="main-setWorkoutBtn" @click="setWorkout(exercise)">+</a>
+        <a class="main-setWorkoutBtn" @click="setWorkout(exercise)"
+          :class="disableWorkout(exercise) ? 'disable' : ''"
+        >
+          +
+        </a>
         <WorkoutCard :exercise="exercise" />
       </div>
     </div>
@@ -63,7 +67,7 @@ export default Vue.extend({
   data: () => {
     return {
       exercises: Workouts,
-      todaysWorkout: [] as Object[],
+      todaysWorkout: [] as any[],
     }
   },
 
@@ -71,8 +75,14 @@ export default Vue.extend({
     filter(val: string = '') {
       console.log('filter', val)
     },
+    disableWorkout(val: any) {
+      return this.todaysWorkout.find((exercise) => {
+        return val.id === exercise.id;
+      });
+    },
     setWorkout(val: Object) {
-      this.todaysWorkout.push(val);
+      // add to todays workout plan
+      this.todaysWorkout.push(val);      
     },
     unsetWorkout(index: number) {
       this.todaysWorkout.splice(index, 1);
@@ -88,11 +98,8 @@ export default Vue.extend({
 .todays-workout {
   @apply grid sm:grid-cols-2 lg:grid-cols-4 gap-5 p-4;
 }
-.todays-workout h3 {
-  @apply col-span-4;
-}
-.todays-workout__item {
-  @apply col-span-1;
+.todays-workout__title {
+  @apply p-4;
 }
 .main-setWorkoutBtn {
   background: #000;
@@ -102,8 +109,17 @@ export default Vue.extend({
   text-align: center;
   cursor: pointer;
 }
+.main-setWorkoutBtn.disable {
+  pointer-events: none;
+  background: grey;
+}
 .main-unsetWorkoutBtn {
   background: red;
+  color: #fff;
+  display: block;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
 }
 .options {
   @apply grid grid-cols-2;
