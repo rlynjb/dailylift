@@ -40,10 +40,10 @@ export default Vue.extend({
   @apply grid grid-cols-12 p-4 gap-3 bg-primary;
 }
 .workout-card__image {
-  @apply col-span-6;
+  @apply col-span-5;
 }
 .workout-card__content {
-  @apply col-span-6 grid grid-cols-3 gap-3;
+  @apply col-span-7 grid grid-cols-3 gap-3;
 }
 .workout-card__title {
   @apply col-span-3 mb-4;
