@@ -4,8 +4,20 @@
 
     <div class="workout-card__content">
       <h2 class="workout-card__title">
-        {{ exercise.name }}
-        <small>{{ exercise.muscles }}</small>
+        <InputField
+          class="workout-card__input"
+          label="name"
+          :val="exercise.name"
+          @input="update"
+        />
+        <small>
+          <InputField
+            class="workout-card__input"
+            label="muscles"
+            :val="exercise.muscles"
+            @input="update"
+          />
+        </small>
       </h2>
       <h6 class="workout-card__label">Sets - Weight</h6>
       <InputField
@@ -28,8 +40,18 @@
       />
 
       <h6 class="workout-card__label">Time</h6>
-      <InputField class="workout-card__input" />
-      <InputField class="workout-card__input" />
+      <InputField
+        class="workout-card__input"
+        label="minutes"
+        :val="exercise.minutes"
+        @input="update"
+      />
+      <InputField
+        class="workout-card__input"
+        label="seconds"
+        :val="exercise.seconds"
+        @input="update"
+      />
     </div>
   </div>
 </template>
