@@ -9,7 +9,25 @@
       <div class="todays-workout__item"
         v-for="(exercise, exerciseIndex) in todaysWorkout" :key="'e'+exerciseIndex">
         <a class="main-unsetWorkoutBtn" @click="unsetWorkout(exerciseIndex)">-</a>
-        <WorkoutCard :exercise="exercise" />
+        <WorkoutCard
+          :exercise="exercise"
+          @input="update"
+        />
+      </div>
+    </div>
+
+    <div class="add-workout">
+      <a class="add-workout__btn"
+        @click="() => displayAddWorkoutForm = !displayAddWorkoutForm">
+        <span v-if="!displayAddWorkoutForm">Add Workout</span>
+        <span v-else>Cancel Add</span>
+      </a>
+
+      <div class="add-workout__form"
+        v-if="displayAddWorkoutForm">
+        <WorkoutCard
+          @input="submit"
+        />
       </div>
     </div>
 
@@ -21,7 +39,10 @@
         >
           +
         </a>
-        <WorkoutCard :exercise="exercise" />
+        <WorkoutCard
+          :exercise="exercise"
+          @input="update"
+        />
       </div>
     </div>
   </div>
@@ -37,10 +58,18 @@ export default Vue.extend({
     return {
       exercises: Workouts,
       todaysWorkout: [] as any[],
+      displayAddWorkoutForm: false,
     }
   },
 
   methods: {
+    submit(obj: any) {
+      debugger
+      // preserve data here..
+    },
+    update(obj: any) {
+      debugger
+    },
     disableWorkout(val: any) {
       return this.todaysWorkout.find((exercise) => {
         return val.id === exercise.id;
@@ -65,6 +94,13 @@ export default Vue.extend({
 }
 .todays-workout__title {
   @apply p-4;
+}
+.add-workout__btn {
+  background: green;
+  color: #fff;
+  width: 100%;
+  display: block;
+  text-align: center;
 }
 .main {
   @apply grid sm:grid-cols-2 lg:grid-cols-4 gap-5 p-4;

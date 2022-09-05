@@ -3,15 +3,18 @@ export interface IWorkout {
   name: string,
   muscles: string,
   image: string,
-  sets: ISets,
+  //sets: ISets,
+  set1: string,
+  set2: string,
+  set3: string,
   minutes: string,
   seconds: string,
 }
 
 export interface ISets {
-  set1: string,
-  set2: string,
-  set3: string,
+  set1?: string,
+  set2?: string,
+  set3?: string,
 }
 
 /**

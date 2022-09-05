@@ -10,13 +10,22 @@
       <h6 class="workout-card__label">Sets - Weight</h6>
       <InputField
         class="workout-card__input"
-        :val="exercise.sets.set1" />
+        label="set1"
+        :val="exercise.set1"
+        @input="update"
+      />
       <InputField
         class="workout-card__input"
-        :val="exercise.sets.set2" />
+        label="set2"
+        :val="exercise.set2"
+        @input="update"
+      />
       <InputField
         class="workout-card__input"
-        :val="exercise.sets.set3" />
+        label="set3"
+        :val="exercise.set3"
+        @input="update"
+      />
 
       <h6 class="workout-card__label">Time</h6>
       <InputField class="workout-card__input" />
@@ -26,12 +35,56 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue, { PropType } from 'vue'
+//import { defineComponent, PropType } from '@nuxtjs/composition-api'
+import { IWorkout } from '@/types/index'
+
+/**
+ * Learning how to use TS interface as Props
+ * refs:
+ * https://frontendsociety.com/using-a-typescript-interfaces-and-types-as-a-prop-type-in-vuejs-508ab3f83480
+ * https://github.com/vuejs/vue/pull/6856
+ * https://v2.vuejs.org/v2/guide/typescript.html#Annotating-Props
+ * https://www.codecademy.com/learn/learn-typescript/modules/learn-typescript-type-narrowing/cheatsheet
+ */
+
+/*
+export default defineComponent({
+  name: 'WorkoutCard',
+  props: {
+    exercise: {
+      type: Object as PropType<IWorkout>
+    },
+  },
+});
+*/
+
 export default Vue.extend({
   name: 'WorkoutCard',
   props: {
-    exercise: Object,
-  }
+    exercise: {
+      type: Object as PropType<IWorkout>,
+      default: () => {
+        return {}
+      }
+    },
+  },
+
+  watch: {
+    exercise: {
+      handler(val) {
+        debugger
+      },
+      deep: true,
+    }
+  },
+
+  methods: {
+    update(obj: any) {
+      this.$set(this.exercise, obj.label, obj.val);
+      this.$emit('input', this.exercise);
+    },
+  },
 })
 </script>
 

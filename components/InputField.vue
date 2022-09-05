@@ -3,16 +3,30 @@
     <input
       class="input-field"
       type="text"
-      :value="val" />
+      :value="val"
+      @input="update(label, $event)"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+
+/*
+  Output:
+  @input - { label: '', val: '' }
+*/
+
 export default Vue.extend({
   name: 'InputField',
   props: {
+    label: String,
     val: String,
+  },
+  methods: {
+    update(key: any, val: any) {
+      this.$emit('input', { label: key, val: val.currentTarget.value })
+    },
   },
 })
 </script>
