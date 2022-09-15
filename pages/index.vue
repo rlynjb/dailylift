@@ -66,11 +66,13 @@ export default Vue.extend({
     loaderBar() {},
 
     submit(obj: any) {
-      debugger
-
-      fetch('/.netlify/functions/create_workout', {
+      fetch('http://localhost:9999/.netlify/functions/create_workout', {
+        mode: 'no-cors',
         body: JSON.stringify(obj),
-        method: 'POST'
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
       }).then(res => {
         debugger
       });

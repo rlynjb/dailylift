@@ -5,7 +5,8 @@
  * https://davidparks.dev/blog/building-a-like-counter-with-faunadb-and-nuxt/
  */
 
-import faunadb from 'faunadb';
+//import faunadb from 'faunadb';
+const faunadb = require('faunadb');
 
 const q = faunadb.query;
 const client = new faunadb.Client({
@@ -16,14 +17,9 @@ const client = new faunadb.Client({
 exports.handler = (event, context, callback) => {
   // parse the string body into a useable JS object
   const data = JSON.parse(event.body);
-  console.log("Function `create_workout` invoked", data);
-
-  const workoutItem = {
-    data
-  };
 
   // construct the fauna query
-  return client.query( q.Create(q.Ref("dailylift-db/workouts"), workoutItem) )
+  return client.query( q.Create( q.Collection("workouts"), data) )
     .then((res) => {
       console.log("SUCCESS create_workout: ", res)
 
