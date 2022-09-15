@@ -1890,6 +1890,11 @@
   "resolved" "https://registry.npmjs.org/@types/less/-/less-3.0.2.tgz"
   "version" "3.0.2"
 
+"@types/lodash@^4.14.185":
+  "integrity" "sha512-evMDG1bC4rgQg4ku9tKpuMh5iBNEwNa3tf9zRHdP1qlv+1WUg44xat4IxCE14gIpZRGUUWAx2VhItCZc25NfMA=="
+  "resolved" "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.185.tgz"
+  "version" "4.14.185"
+
 "@types/mime@*":
   "integrity" "sha512-fccbsHKqFDXClBZTDLA43zl0+TbxyIwyzIzwwhvoJvhNjOErCdeX2xJbURimv2EbSVUGav001PaCJg4mZxMl4w=="
   "resolved" "https://registry.npmjs.org/@types/mime/-/mime-3.0.0.tgz"

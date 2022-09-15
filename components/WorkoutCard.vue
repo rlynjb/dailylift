@@ -59,7 +59,8 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 //import { defineComponent, PropType } from '@nuxtjs/composition-api'
-import { IWorkout } from '@/types/index'
+import { IWorkout } from '~/types/index'
+import { debounce } from 'lodash'
 
 /**
  * Learning how to use TS interface as Props
@@ -92,13 +93,9 @@ export default Vue.extend({
     },
   },
 
-  watch: {
-    exercise: {
-      handler(val) {
-        debugger
-      },
-      deep: true,
-    }
+  created() {
+    // ref: https://splunktool.com/how-to-use-lodash-debounce-in-vuejs-watch-with-typescript
+    this.update = debounce(this.update, 2000);
   },
 
   methods: {

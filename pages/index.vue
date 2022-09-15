@@ -63,12 +63,47 @@ export default Vue.extend({
   },
 
   methods: {
+    loaderBar() {},
+
     submit(obj: any) {
       debugger
-      // preserve data here..
+
+      fetch('/.netlify/functions/create_workout', {
+        body: JSON.stringify(obj),
+        method: 'POST'
+      }).then(res => {
+        debugger
+      });
+
+
+      /**
+       * when submit success
+       * show loaderBar in update
+       * 1. close add workout block
+       * 2. append new item in the beginning
+       */
+
+      /**
+       * when submit fail
+       * show loaderBar in update
+       * 1. show notification to try again later
+       */
     },
     update(obj: any) {
       debugger
+
+      /**
+       * show loader bar at bottom while waiting for form
+       * to update
+       * 
+       * when success
+       * 1. turn loader bar to green
+       * 2. then disappear/fade
+       * 
+       * when fail
+       * 1. turn loader bar to red
+       * 2. display notification, failed to update
+       */
     },
     disableWorkout(val: any) {
       return this.todaysWorkout.find((exercise) => {
