@@ -52,6 +52,14 @@
 import Vue from 'vue'
 import { Workouts } from '~/lib/data'
 
+const config = {
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+  }
+}
+
 export default Vue.extend({
   name: 'IndexPage',
   data: () => {
@@ -62,35 +70,53 @@ export default Vue.extend({
     }
   },
 
+  mounted() {
+    this.readWorkouts()
+      .then(res => {
+        //debugger
+      })
+      .catch(err => {
+        //debugger
+      });
+  },
+
   methods: {
     loaderBar() {},
 
-    submit(obj: any) {
-      fetch('http://localhost:9999/.netlify/functions/create_workout', {
+    createWorkout(data: any) {
+      return fetch('http://localhost:9999/.netlify/functions/create_workout', {
         mode: 'no-cors',
-        body: JSON.stringify(obj),
+        body: JSON.stringify(data),
         method: 'POST',
-        headers: {
-          "Content-Type": "application/json"
-        },
-      }).then(res => {
-        debugger
-      });
-
-
-      /**
-       * when submit success
-       * show loaderBar in update
-       * 1. close add workout block
-       * 2. append new item in the beginning
-       */
-
-      /**
-       * when submit fail
-       * show loaderBar in update
-       * 1. show notification to try again later
-       */
+      }).then(res => res);
     },
+
+    readWorkouts() {
+      return this.$axios.$get('http://localhost:9999/.netlify/functions/read_workouts');
+    },
+
+    submit(obj: any) {
+      this.createWorkout(obj)
+        .then(res => {
+          debugger
+          /**
+           * when submit success
+           * show loaderBar in update
+           * 1. close add workout block
+           * 2. append new item in the beginning
+           * / call readWorkouts
+           */
+        })
+        .catch(err => {
+          debugger
+          /**
+           * when submit fail
+           * show loaderBar in update
+           * 1. show notification to try again later
+           */
+        });
+    },
+
     update(obj: any) {
       debugger
 
