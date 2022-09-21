@@ -1,7 +1,8 @@
 # whats next
 - read about serverless functions and deploy
 - deploy latest changes
-- read nuxtjs and vuejs best practices
+- read nuxtjs and vuejs best practices (create utils, composables, etc)
+- learn how to tie up typescript with data calls on netlify functions
 - clean up code or organize
 
 # dailylift
