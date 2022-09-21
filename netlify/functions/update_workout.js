@@ -29,7 +29,7 @@ exports.handler = async (event, context) => {
 
   try {
     const data = JSON.parse(event.body);
-    const id = getId(event.path); // revise this to retrieve id
+    const id = getId(event.path);
 
     const res = await client.query(Update(
       Ref(Collection('workouts'), id),

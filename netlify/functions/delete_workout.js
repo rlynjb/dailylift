@@ -1,7 +1,7 @@
 const faunadb = require('faunadb');
 
 const q = faunadb.query;
-const { Delete, Collection } = q;
+const { Delete, Collection, Ref } = q;
 
 const client = new faunadb.Client({
   secret: process.env.FAUNA_SECRET_KEY
@@ -10,24 +10,29 @@ const client = new faunadb.Client({
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+}
+
+// utils
+const getId = (path) => {
+  return path.match(/\/(\d*)/g)[3].replace('/', '');
 }
 
 exports.handler = async (event, context) => {
-  try {
-    const id = event.path; // revise this to retrieve id
-    console.log('KIRBY', id);
-
-    const res = client.query(Delete(
-      Collection(`workouts/${id}`)
-    ));
-
-    // set cors here
-    if (event.httpMethod === 'OPTIONS') {
-      return {
-        statusCode: 200,
-        headers: CORS_HEADERS,
-      }
+  // set cors here
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: CORS_HEADERS,
     }
+  }
+  
+  try {
+    const id = getId(event.path);
+
+    const res = await client.query(Delete(
+      Ref(Collection('workouts'), id)
+    ));
 
     return {
       statusCode: 200,

@@ -100,7 +100,14 @@ export default Vue.extend({
         return res;
       });
     },
-    deleteWorkout() {},
+    async deleteWorkout(data: any) {
+      return await this.$axios.$delete(
+        `http://localhost:9999/.netlify/functions/delete_workout/${data.id}`
+      )
+      .then(res => {
+        debugger
+      });
+    },
 
     disableWorkout(val: any) {
       return this.todaysWorkout.find((exercise) => {
