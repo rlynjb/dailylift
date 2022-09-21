@@ -43,6 +43,7 @@
           :exercise="exercise"
           @input="updateWorkout"
         />
+        <a @click="deleteWorkout(exercise)">x</a>
       </div>
     </div>
   </div>
@@ -87,7 +88,6 @@ export default Vue.extend({
       .then(res => {
         // set items in this.exercises
         this.exercises = res;
-        return res;
       });
     },
     async updateWorkout(data: any) {
@@ -97,7 +97,6 @@ export default Vue.extend({
       )
       .then(res => {
         // find item in this.exercises and replace with latest respond data
-        return res;
       });
     },
     async deleteWorkout(data: any) {
@@ -105,7 +104,7 @@ export default Vue.extend({
         `http://localhost:9999/.netlify/functions/delete_workout/${data.id}`
       )
       .then(res => {
-        debugger
+        this.readWorkouts();
       });
     },
 
