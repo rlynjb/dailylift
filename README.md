@@ -1,9 +1,9 @@
 # whats next
 - read about serverless functions and deploy
 - deploy latest changes
+- work on image field upload using base64 for now
 - read nuxtjs and vuejs best practices (create utils, composables, etc)
-- learn how to tie up typescript with data calls on netlify functions
-- clean up code or organize
+- learn how to tie up typescript with data calls on netlify functions, clean up and organize
 
 # dailylift
 
