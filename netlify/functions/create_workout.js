@@ -2,7 +2,7 @@
  * complete tutorial
  * CRUD with FaunaDB, Netlify, Nuxt
  * https://www.netlify.com/blog/2018/07/09/building-serverless-crud-apps-with-netlify-functions-and-faunadb/#3-create-a-function
- * https://davidparks.dev/blog/building-a-like-counter-with-faunadb-and-nuxt/
+ * https://nordschool.com/build-a-serverless-database-using-faunadb-and-netlify-functions
  */
 
 const faunadb = require('faunadb');

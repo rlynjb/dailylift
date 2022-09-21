@@ -1,3 +1,9 @@
+# whats next
+- read about serverless functions and deploy
+- deploy latest changes
+- read nuxtjs and vuejs best practices
+- clean up code or organize
+
 # dailylift
 
 ## Build Setup
