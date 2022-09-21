@@ -11,7 +11,7 @@
         <a class="main-unsetWorkoutBtn" @click="unsetWorkout(exerciseIndex)">-</a>
         <WorkoutCard
           :exercise="exercise"
-          @input="update"
+          @input="updateWorkout"
         />
       </div>
     </div>
@@ -26,7 +26,7 @@
       <div class="add-workout__form"
         v-if="displayAddWorkoutForm">
         <WorkoutCard
-          @input="submit"
+          @input="createWorkout"
         />
       </div>
     </div>
@@ -41,7 +41,7 @@
         </a>
         <WorkoutCard
           :exercise="exercise"
-          @input="update"
+          @input="updateWorkout"
         />
       </div>
     </div>
@@ -51,14 +51,6 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Workouts } from '~/lib/data'
-
-const config = {
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
-  }
-}
 
 export default Vue.extend({
   name: 'IndexPage',
@@ -71,71 +63,48 @@ export default Vue.extend({
   },
 
   mounted() {
-    this.readWorkouts()
-      .then(res => {
-        //debugger
-      })
-      .catch(err => {
-        //debugger
-      });
+    this.readWorkouts();
   },
 
   methods: {
-    loaderBar() {},
-
-    createWorkout(data: any) {
-      return fetch('http://localhost:9999/.netlify/functions/create_workout', {
-        mode: 'no-cors',
-        body: JSON.stringify(data),
-        method: 'POST',
-      }).then(res => res);
+    async createWorkout(data: any) {
+      return await this.$axios.$post(
+        'http://localhost:9999/.netlify/functions/create_workout',
+        JSON.stringify(data)
+      )
+      .then(res => {
+        this.displayAddWorkoutForm = false;
+        this.readWorkouts();
+      })
+      .catch(err => {
+        //
+      });
     },
-
-    readWorkouts() {
-      return this.$axios.$get('http://localhost:9999/.netlify/functions/read_workouts');
+    async readWorkouts() {
+      return await this.$axios.$get(
+        'http://localhost:9999/.netlify/functions/read_workouts'
+      )
+      .then(res => {
+        // set items in this.exercises
+        this.exercises = res;
+        return res;
+      });
     },
-
-    submit(obj: any) {
-      this.createWorkout(obj)
-        .then(res => {
-          debugger
-          /**
-           * when submit success
-           * show loaderBar in update
-           * 1. close add workout block
-           * 2. append new item in the beginning
-           * / call readWorkouts
-           */
-        })
-        .catch(err => {
-          debugger
-          /**
-           * when submit fail
-           * show loaderBar in update
-           * 1. show notification to try again later
-           */
-        });
+    async updateWorkout(data: any) {
+      return await this.$axios.$put(
+        `http://localhost:9999/.netlify/functions/update_workout/${data.id}`,
+        data
+      )
+      .then(res => {
+        // find item in this.exercises and replace with latest respond data
+        return res;
+      });
     },
+    deleteWorkout() {},
 
-    update(obj: any) {
-      debugger
-
-      /**
-       * show loader bar at bottom while waiting for form
-       * to update
-       * 
-       * when success
-       * 1. turn loader bar to green
-       * 2. then disappear/fade
-       * 
-       * when fail
-       * 1. turn loader bar to red
-       * 2. display notification, failed to update
-       */
-    },
     disableWorkout(val: any) {
       return this.todaysWorkout.find((exercise) => {
-        return val.id === exercise.id;
+        return val.name === exercise.name;
       });
     },
     setWorkout(val: Object) {

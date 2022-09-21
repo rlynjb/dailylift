@@ -12,20 +12,28 @@ const CORS_HEADERS = {
   'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
 }
 
-exports.handler = async (event, context, callback) => {
+exports.handler = async (event, context) => {
+  // set cors here
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: CORS_HEADERS,
+    }
+  }
+
   try {
     const res = await client.query(Map(
       Paginate(Documents(Collection('workouts'))),
       Lambda(x => Get(x))
-    ));
-
-    // set cors here
-    if (event.httpMethod === 'OPTIONS') {
-      return {
-        statusCode: 200,
-        headers: CORS_HEADERS,
-      }
-    }
+    ))
+    .then(o => {
+      return o.data.map(mapO => {
+        return {
+          ...mapO.data,
+          id: mapO.ref.id
+        }
+      });
+    });
     
     return {
       statusCode: 200,
@@ -36,7 +44,7 @@ exports.handler = async (event, context, callback) => {
       body: JSON.stringify(res)
     }
   } catch (err) {
-    console.log('KIRBY error', err)
+
     return {
       statusCode: 400,
       body: JSON.stringify(err)
