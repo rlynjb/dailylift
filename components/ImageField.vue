@@ -1,9 +1,18 @@
 <template>
   <div class="image-field">
-    <img v-if="src" :src="require(`~/assets/images/${src}`)" />
-    <img v-else src="~/assets/images/kirby.jpg" />
+    <div v-if="value">
+      <!--
+      <img :src="require(`~/assets/images/${ value }`)" />
+      -->
+      <img :src="value" />
+    </div>
 
-    <a class="image-field__btn">Edit Image</a>
+    <div v-else>
+      <img src="~/assets/images/kirby.jpg" />
+
+      <input type="file" id="myFile" name="filename"
+        @input="setImage">
+    </div>
   </div>
 </template>
 
@@ -12,7 +21,17 @@ import Vue from 'vue'
 export default Vue.extend({
   name: 'ImageField',
   props: {
-    src: String,
+    value: String,
+  },
+
+  methods: {
+    setImage(file: any) {
+      const reader = new FileReader();
+      reader.onloadend = (event) => {        
+        this.$emit('input', reader.result)
+      }
+      reader.readAsDataURL(file.target.files[0]);
+    }
   },
 })
 </script>

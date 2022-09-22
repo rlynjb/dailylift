@@ -1,6 +1,6 @@
 <template>
   <div class="workout-card">
-    <ImageField class="workout-card__image" :src="exercise.image" />
+    <ImageField class="workout-card__image" v-model="exercise.image" />
 
     <div class="workout-card__content">
       <h2 class="workout-card__title">
