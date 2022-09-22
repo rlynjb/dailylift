@@ -2,10 +2,13 @@
 - done: read about serverless functions and deploy
 - done: deploy latest changes
 - done: work on image field upload using base64 for now
-- wip: read nuxtjs and vuejs best practices (create utils, composables, etc)
+- wip: make it work online, review env vars
+- read nuxtjs and vuejs best practices (create utils, composables, etc)
 - learn how to tie up typescript with data calls on netlify functions, clean up and organize
 - shorten base64
 - improve UI UX and styling
+- review setting up hosting, serverless (write up steps if necessary)
+- review architecting app (write up steps or resources if necessary)
 
 # dailylift
 
