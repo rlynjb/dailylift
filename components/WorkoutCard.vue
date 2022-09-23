@@ -1,25 +1,27 @@
 <template>
   <div class="workout-card">
-    <ImageField class="workout-card__image" v-model="exercise.image" />
-
-    <div class="workout-card__content">
-      <h2 class="workout-card__title">
+    <h2 class="workout-card__title">
+      <InputField
+        class="workout-card__input"
+        label="name"
+        :val="exercise.name"
+        @input="update"
+      />
+      <small>
         <InputField
           class="workout-card__input"
-          label="name"
-          :val="exercise.name"
+          label="muscles"
+          :val="exercise.muscles"
           @input="update"
         />
-        <small>
-          <InputField
-            class="workout-card__input"
-            label="muscles"
-            :val="exercise.muscles"
-            @input="update"
-          />
-        </small>
-      </h2>
-      <h6 class="workout-card__label">Sets - Weight</h6>
+      </small>
+    </h2>
+
+    <div class="workout-card__content">
+      <ImageField class="workout-card__image" v-model="exercise.image" />
+
+      <div class="workout-card__reps">
+      <h6 class="workout-card__label">Sets</h6>
       <InputField
         class="workout-card__input"
         label="set1"
@@ -39,6 +41,26 @@
         @input="update"
       />
 
+      <h6 class="workout-card__label">Weight</h6>
+      <InputField
+        class="workout-card__input"
+        label="weight1"
+        :val="exercise.weight1"
+        @input="update"
+      />
+      <InputField
+        class="workout-card__input"
+        label="weight2"
+        :val="exercise.weight2"
+        @input="update"
+      />
+      <InputField
+        class="workout-card__input"
+        label="weight3"
+        :val="exercise.weight3"
+        @input="update"
+      />
+
       <h6 class="workout-card__label">Time</h6>
       <InputField
         class="workout-card__input"
@@ -52,6 +74,7 @@
         :val="exercise.seconds"
         @input="update"
       />
+      </div>
     </div>
   </div>
 </template>
@@ -111,14 +134,8 @@ export default Vue.extend({
 .workout-card {
   @apply grid grid-cols-12 p-4 gap-3 bg-primary;
 }
-.workout-card__image {
-  @apply col-span-5;
-}
-.workout-card__content {
-  @apply col-span-7 grid grid-cols-3 gap-3;
-}
 .workout-card__title {
-  @apply col-span-3 mb-4;
+  @apply col-span-12 mb-4;
   font-size: 1.4em;
   line-height: 1.3;
 }
@@ -126,6 +143,15 @@ export default Vue.extend({
   @apply mt-1;
   font-size: 0.5em;
   display: block;
+}
+.workout-card__content {
+  @apply col-span-12 grid grid-cols-2;
+}
+.workout-card__image {
+  @apply col-span-1;
+}
+.workout-card__reps {
+  @apply col-span-1 grid grid-cols-3 gap-2;
 }
 .workout-card__label {
   @apply col-span-3;

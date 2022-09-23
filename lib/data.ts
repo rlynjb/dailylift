@@ -9,6 +9,9 @@ export const Workouts: IWorkout[] = [
     set1: '8 - 8k',
     set2: '8 - 8k',
     set3: '8 - 8k',
+    weight1: '',
+    weight2: '',
+    weight3: '',
     minutes: '0',
     seconds: '0'
   },
@@ -20,6 +23,9 @@ export const Workouts: IWorkout[] = [
     set1: '8 - 6k',
     set2: '8 - 6k',
     set3: '8 - 6k',
+    weight1: '',
+    weight2: '',
+    weight3: '',
     minutes: '0',
     seconds: '0'
   },
@@ -31,6 +37,9 @@ export const Workouts: IWorkout[] = [
     set1: '8 - 6k',
     set2: '8 - 6k',
     set3: '',
+    weight1: '',
+    weight2: '',
+    weight3: '',
     minutes: '0',
     seconds: '0'
   },
@@ -42,6 +51,9 @@ export const Workouts: IWorkout[] = [
     set1: '6 - 4k',
     set2: '6 - 4k',
     set3: '',
+    weight1: '',
+    weight2: '',
+    weight3: '',
     minutes: '0',
     seconds: '0'
   },
@@ -53,6 +65,9 @@ export const Workouts: IWorkout[] = [
     set1: '8 - 8k',
     set2: '8 - 8k',
     set3: '',
+    weight1: '',
+    weight2: '',
+    weight3: '',
     minutes: '0',
     seconds: '0'
   },
@@ -64,6 +79,9 @@ export const Workouts: IWorkout[] = [
     set1: '',
     set2: '',
     set3: '',
+    weight1: '',
+    weight2: '',
+    weight3: '',
     minutes: '0',
     seconds: '0'
   },
@@ -75,6 +93,9 @@ export const Workouts: IWorkout[] = [
     set1: '',
     set2: '',
     set3: '',
+    weight1: '',
+    weight2: '',
+    weight3: '',
     minutes: '0',
     seconds: '0'
   },
@@ -86,6 +107,9 @@ export const Workouts: IWorkout[] = [
     set1: '',
     set2: '',
     set3: '',
+    weight1: '',
+    weight2: '',
+    weight3: '',
     minutes: '0',
     seconds: '0'
   },
@@ -97,6 +121,9 @@ export const Workouts: IWorkout[] = [
     set1: '',
     set2: '',
     set3: '',
+    weight1: '',
+    weight2: '',
+    weight3: '',
     minutes: '0',
     seconds: '0'
   },
@@ -108,6 +135,9 @@ export const Workouts: IWorkout[] = [
     set1: '',
     set2: '',
     set3: '',
+    weight1: '',
+    weight2: '',
+    weight3: '',
     minutes: '0',
     seconds: '0'
   },
@@ -119,6 +149,9 @@ export const Workouts: IWorkout[] = [
     set1: '',
     set2: '',
     set3: '',
+    weight1: '',
+    weight2: '',
+    weight3: '',
     minutes: '0',
     seconds: '0'
   },
@@ -130,6 +163,9 @@ export const Workouts: IWorkout[] = [
     set1: '',
     set2: '',
     set3: '',
+    weight1: '',
+    weight2: '',
+    weight3: '',
     minutes: '0',
     seconds: '0'
   },
@@ -141,6 +177,9 @@ export const Workouts: IWorkout[] = [
     set1: '',
     set2: '',
     set3: '',
+    weight1: '',
+    weight2: '',
+    weight3: '',
     minutes: '0',
     seconds: '0'
   },
@@ -152,6 +191,9 @@ export const Workouts: IWorkout[] = [
     set1: '',
     set2: '',
     set3: '',
+    weight1: '',
+    weight2: '',
+    weight3: '',
     minutes: '0',
     seconds: '0'
   },
@@ -163,6 +205,9 @@ export const Workouts: IWorkout[] = [
     set1: '',
     set2: '',
     set3: '',
+    weight1: '',
+    weight2: '',
+    weight3: '',
     minutes: '0',
     seconds: '0'
   },
@@ -174,6 +219,9 @@ export const Workouts: IWorkout[] = [
     set1: '',
     set2: '',
     set3: '',
+    weight1: '',
+    weight2: '',
+    weight3: '',
     minutes: '0',
     seconds: '0'
   },
@@ -185,6 +233,9 @@ export const Workouts: IWorkout[] = [
     set1: '',
     set2: '',
     set3: '',
+    weight1: '',
+    weight2: '',
+    weight3: '',
     minutes: '0',
     seconds: '0'
   },
@@ -196,6 +247,9 @@ export const Workouts: IWorkout[] = [
     set1: '',
     set2: '',
     set3: '',
+    weight1: '',
+    weight2: '',
+    weight3: '',
     minutes: '0',
     seconds: '0'
   },
@@ -207,6 +261,9 @@ export const Workouts: IWorkout[] = [
     set1: '',
     set2: '',
     set3: '',
+    weight1: '',
+    weight2: '',
+    weight3: '',
     minutes: '0',
     seconds: '0'
   },

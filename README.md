@@ -12,6 +12,9 @@
 - review setting up hosting, serverless (write up steps if necessary)
 - review architecting app (write up steps or resources if necessary)
 
+upcoming features:
+- superset (be able to link 2 workouts)
+
 # dailylift
 
 ## Build Setup

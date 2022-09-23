@@ -7,6 +7,9 @@ export interface IWorkout {
   set1: string,
   set2: string,
   set3: string,
+  weight1: string,
+  weight2: string,
+  weight3: string,
   minutes: string,
   seconds: string,
 }
