@@ -70,7 +70,7 @@ export default Vue.extend({
   methods: {
     async createWorkout(data: any) {
       return await this.$axios.$post(
-        'http://localhost:9999/.netlify/functions/create_workout',
+        '/.netlify/functions/create_workout',
         JSON.stringify(data)
       )
       .then(res => {
@@ -83,7 +83,7 @@ export default Vue.extend({
     },
     async readWorkouts() {
       return await this.$axios.$get(
-        'http://localhost:9999/.netlify/functions/read_workouts'
+        '/.netlify/functions/read_workouts'
       )
       .then(res => {
         // set items in this.exercises
@@ -92,7 +92,7 @@ export default Vue.extend({
     },
     async updateWorkout(data: any) {
       return await this.$axios.$put(
-        `http://localhost:9999/.netlify/functions/update_workout/${data.id}`,
+        `/.netlify/functions/update_workout/${data.id}`,
         data
       )
       .then(res => {
@@ -101,7 +101,7 @@ export default Vue.extend({
     },
     async deleteWorkout(data: any) {
       return await this.$axios.$delete(
-        `http://localhost:9999/.netlify/functions/delete_workout/${data.id}`
+        `/.netlify/functions/delete_workout/${data.id}`
       )
       .then(res => {
         this.readWorkouts();
