@@ -4,7 +4,7 @@
 - done: work on image field upload using base64 for now
 - done: make it work online, review env vars
 - done: read nuxtjs and vuejs best practices (create utils, composables, etc)
-- after reading nuxt and vuejs doc. try to use vue3 in nuxt by using composition api, also look into vue3 new features and best practices
+- after reading nuxt and vuejs doc. try to use vue3 in nuxt by using composition api, also look into vue3 new features and best practices (familiarize yourself with new concepts in nuxt and vue)
 - add workout items
 - learn how to tie up typescript with data calls on netlify functions, clean up and organize
 - implement auth with faunadb and netlify functions
