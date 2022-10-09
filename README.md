@@ -16,7 +16,14 @@
 upcoming features:
 - superset (be able to link 2 workouts)
 
+
 # dailylift
+# about
+a web app to keep all my fave workouts and reminder
+
+# learning
+deploying on netlify, netlify functions and faunadb. deploying static website with serverless backend and database.
+
 
 ## Build Setup
 
