@@ -1,7 +1,8 @@
 <template>
   <div class="index-page">
     <div class="header">
-      <h3>Daily Lift</h3>
+      <img class="header__logo"
+        src="~/static/Daily.png" />
     </div>
 
     <h3 class="todays-workout__title">Today's Workout</h3>
@@ -125,7 +126,10 @@ export default Vue.extend({
 
 <style lang="postcss">
 .header {
-  @apply grid grid-cols-2 justify-between p-4 bg-black text-white;
+  @apply grid grid-cols-2 justify-between p-4;
+}
+.header__logo {
+  max-width: 15em;
 }
 .todays-workout {
   @apply grid sm:grid-cols-2 lg:grid-cols-4 gap-5 p-4;
