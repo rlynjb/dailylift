@@ -1,9 +1,13 @@
 # whats next
-- done: read about serverless functions and deploy
-- done: deploy latest changes
-- done: work on image field upload using base64 for now
-- done: make it work online, review env vars
-- done: read nuxtjs and vuejs best practices (create utils, composables, etc)
+- DONE: read about serverless functions and deploy
+- DONE: deploy latest changes
+- DONE: work on image field upload using base64 for now
+- DONE: make it work online, review env vars
+- DONE: read nuxtjs and vuejs best practices (create utils, composables, etc)
+- DONE: document how to use netlify functions (its already been documented)
+- add notification if post is success or fail
+- check why image bas64 is not going through
+
 - after reading nuxt and vuejs doc. try to use vue3 in nuxt by using composition api, also look into vue3 new features and best practices (familiarize yourself with new concepts in nuxt and vue)
 - add workout items
 - learn how to tie up typescript with data calls on netlify functions, clean up and organize
@@ -15,6 +19,7 @@
 
 upcoming features:
 - superset (be able to link 2 workouts)
+- combine exercises and save as routine
 
 
 # dailylift
@@ -22,7 +27,12 @@ upcoming features:
 a web app to keep all my fave workouts and reminder
 
 # learning
-deploying on netlify, netlify functions and faunadb. deploying static website with serverless backend and database.
+- deploying on netlify, netlify functions and faunadb. deploying static website with serverless backend and database.
+- https://blog.bitsrc.io/bootstrapping-a-serverless-jamstack-with-nuxtjs-faunadb-graphql-and-netlify-905bdd3191f
+
+# Docs
+- Netlify CLI - https://cli.netlify.com/
+- Netlify Official Doc - https://docs.netlify.com/cli/get-started/
 
 
 ## Build Setup

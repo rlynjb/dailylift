@@ -1,5 +1,7 @@
 <template>
   <div class="index-page">
+    <notify v-model="notifyMsg" />
+
     <div class="header">
       <img class="header__logo"
         src="~/static/Daily.png" />
@@ -53,14 +55,17 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Workouts } from '~/lib/data'
+import Notify from '../components/Notify.vue';
 
 export default Vue.extend({
+  components: { Notify },
   name: 'IndexPage',
   data: () => {
     return {
       exercises: Workouts,
       todaysWorkout: [] as any[],
       displayAddWorkoutForm: false,
+      notifyMsg: '',
     }
   },
 
@@ -76,10 +81,12 @@ export default Vue.extend({
       )
       .then(res => {
         this.displayAddWorkoutForm = false;
+        this.notifyMsg = `New Workout CREATED`;
+
         this.readWorkouts();
       })
       .catch(err => {
-        //
+        this.notifyMsg = `Create New Workout FAIL: ${err}`;
       });
     },
     async readWorkouts() {
@@ -89,6 +96,9 @@ export default Vue.extend({
       .then(res => {
         // set items in this.exercises
         this.exercises = res;
+      })
+      .catch(err => {
+        this.notifyMsg = `Read Workouts FAIL: ${ err }`;
       });
     },
     async updateWorkout(data: any) {
@@ -98,6 +108,11 @@ export default Vue.extend({
       )
       .then(res => {
         // find item in this.exercises and replace with latest respond data
+
+        this.notifyMsg = `Workout UPDATED`;
+      })
+      .catch(err => {
+        this.notifyMsg = `Update Workout FAIL: ${err}`;
       });
     },
     async deleteWorkout(data: any) {
@@ -105,7 +120,12 @@ export default Vue.extend({
         `/.netlify/functions/delete_workout/${data.id}`
       )
       .then(res => {
+        this.notifyMsg = `Workout DELETED`;
+
         this.readWorkouts();
+      })
+      .catch(err => {
+        this.notifyMsg = `Delete Workout FAIL: ${err}`;
       });
     },
 
