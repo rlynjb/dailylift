@@ -21,6 +21,7 @@ upcoming features:
 - superset (be able to link 2 workouts)
 - combine exercises and save as routine
 - add different view mode, Show Details, Circuit Mode, Rest Mode
+- add UPDATE DELETE Image Field
 
 
 # dailylift
@@ -34,6 +35,10 @@ a web app to keep all my fave workouts and reminder
 # Docs
 - Netlify CLI - https://cli.netlify.com/
 - Netlify Official Doc - https://docs.netlify.com/cli/get-started/
+- Vue - https://vuejs.org/
+- Nuxt - https://nuxtjs.org/
+- Tailwind - https://tailwindcss.com/
+- FaunaDB - https://docs.fauna.com/fauna/current/
 
 
 ## Build Setup
