@@ -19,6 +19,7 @@
 - after reading nuxt and vuejs doc. try to use vue3 in nuxt by using composition api, also look into vue3 new features and best practices (familiarize yourself with new concepts in nuxt and vue)
 - learn how to tie up typescript with data calls on netlify functions, clean up and organize
 - implement auth with faunadb and netlify functions
+- implement object storage for images/media
 
 ## Upcoming Features:
 - superset (be able to link 2 workouts)
