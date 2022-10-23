@@ -20,6 +20,7 @@
 upcoming features:
 - superset (be able to link 2 workouts)
 - combine exercises and save as routine
+- add different view mode, Show Details, Circuit Mode, Rest Mode
 
 
 # dailylift
