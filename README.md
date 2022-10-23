@@ -12,6 +12,7 @@
 - shorten base64
 - improve UI UX and styling
 - improve Input Field, Implement Text Area Field component if possible
+- find a way to load minimal workouts.. probably categorize by equipment
 
 ## Technical Backlog
 - review setting up hosting, serverless (write up steps if necessary)
