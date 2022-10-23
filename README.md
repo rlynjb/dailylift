@@ -35,8 +35,8 @@ a web app to keep all my fave workouts and reminder
 # Docs
 - Netlify CLI - https://cli.netlify.com/
 - Netlify Official Doc - https://docs.netlify.com/cli/get-started/
-- Vue - https://vuejs.org/
-- Nuxt - https://nuxtjs.org/
+- Vue2 - https://vuejs.org/
+- Nuxt2 - https://nuxtjs.org/
 - Tailwind - https://tailwindcss.com/
 - FaunaDB - https://docs.fauna.com/fauna/current/
 
