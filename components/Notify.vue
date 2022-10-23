@@ -16,7 +16,7 @@ export default Vue.extend({
 
   watch: {
     value(val) {
-      this.value = val;
+      this.$emit('input', val);
 
       setTimeout(() => {
         this.$emit('input', '');
