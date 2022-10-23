@@ -28,7 +28,10 @@ export default Vue.extend({
     setImage(file: any) {
       const reader = new FileReader();
       reader.onloadend = (event) => {        
-        this.$emit('input', reader.result)
+        this.$emit('input', {
+          label: 'image',
+          val: reader.result
+        })
       }
       reader.readAsDataURL(file.target.files[0]);
     }

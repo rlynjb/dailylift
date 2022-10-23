@@ -5,11 +5,11 @@
 - DONE: make it work online, review env vars
 - DONE: read nuxtjs and vuejs best practices (create utils, composables, etc)
 - DONE: document how to use netlify functions (its already been documented)
-- add notification if post is success or fail
-- check why image bas64 is not going through
+- DONE: add notification if post is success or fail
+- DONE: check why image bas64 is not going through
+- add workout items
 
 - after reading nuxt and vuejs doc. try to use vue3 in nuxt by using composition api, also look into vue3 new features and best practices (familiarize yourself with new concepts in nuxt and vue)
-- add workout items
 - learn how to tie up typescript with data calls on netlify functions, clean up and organize
 - implement auth with faunadb and netlify functions
 - shorten base64

@@ -17,9 +17,16 @@
       </small>
     </h2>
 
-    <div class="workout-card__content">
-      <ImageField class="workout-card__image" v-model="exercise.image" />
+    <ImageField class="workout-card__image"
+      label="image"
+      v-model="exercise.image"
+      @input="update"
+    />
 
+    <button @click="() => toggleDetail = !toggleDetail">Detail</button>
+
+    <div class="workout-card__content"
+      v-if="toggleDetail">
       <div class="workout-card__reps">
       <h6 class="workout-card__label">Sets</h6>
       <InputField
@@ -116,6 +123,12 @@ export default Vue.extend({
     },
   },
 
+  data() {
+    return {
+      toggleDetail: false,
+    }
+  },
+
   created() {
     // ref: https://splunktool.com/how-to-use-lodash-debounce-in-vuejs-watch-with-typescript
     this.update = debounce(this.update, 2000);
@@ -144,14 +157,14 @@ export default Vue.extend({
   font-size: 0.5em;
   display: block;
 }
+.workout-card__image {
+  @apply col-span-12;
+}
 .workout-card__content {
   @apply col-span-12 grid grid-cols-2;
 }
-.workout-card__image {
-  @apply col-span-1;
-}
 .workout-card__reps {
-  @apply col-span-1 grid grid-cols-3 gap-2;
+  @apply col-span-12 grid grid-cols-3 gap-2;
 }
 .workout-card__label {
   @apply col-span-3;
