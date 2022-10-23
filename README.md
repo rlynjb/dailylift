@@ -1,4 +1,5 @@
 # whats next
+## Minimum Viable Product
 - DONE: read about serverless functions and deploy
 - DONE: deploy latest changes
 - DONE: work on image field upload using base64 for now
@@ -8,16 +9,18 @@
 - DONE: add notification if post is success or fail
 - DONE: check why image bas64 is not going through
 - add workout items
+- shorten base64
+- improve UI UX and styling
+- improve Input Field, Implement Text Area Field component if possible
 
+## Technical Backlog
+- review setting up hosting, serverless (write up steps if necessary)
+- review architecting app (write up steps or resources if necessary)
 - after reading nuxt and vuejs doc. try to use vue3 in nuxt by using composition api, also look into vue3 new features and best practices (familiarize yourself with new concepts in nuxt and vue)
 - learn how to tie up typescript with data calls on netlify functions, clean up and organize
 - implement auth with faunadb and netlify functions
-- shorten base64
-- improve UI UX and styling
-- review setting up hosting, serverless (write up steps if necessary)
-- review architecting app (write up steps or resources if necessary)
 
-upcoming features:
+## Upcoming Features:
 - superset (be able to link 2 workouts)
 - combine exercises and save as routine
 - add different view mode, Show Details, Circuit Mode, Rest Mode
@@ -25,14 +28,14 @@ upcoming features:
 
 
 # dailylift
-# about
+## about
 a web app to keep all my fave workouts and reminder
 
-# learning
+## learning
 - deploying on netlify, netlify functions and faunadb. deploying static website with serverless backend and database.
 - https://blog.bitsrc.io/bootstrapping-a-serverless-jamstack-with-nuxtjs-faunadb-graphql-and-netlify-905bdd3191f
 
-# Docs
+## Docs
 - Netlify CLI - https://cli.netlify.com/
 - Netlify Official Doc - https://docs.netlify.com/cli/get-started/
 - Vue2 - https://vuejs.org/
