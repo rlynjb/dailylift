@@ -7,7 +7,7 @@
         src="~/static/Daily.png" />
     </div>
 
-    <h3 class="todays-workout__title">Today's Workout</h3>
+    <h3 class="todays-workout__title">Routines</h3>
     <div class="todays-workout">
       <div class="todays-workout__item"
         v-for="(exercise, exerciseIndex) in todaysWorkout" :key="'e'+exerciseIndex">
@@ -158,12 +158,18 @@ export default Vue.extend({
 .todays-workout__title {
   @apply p-4;
 }
+.add-workout {
+  @apply grid grid-cols-4 gap-5 p-4;
+}
 .add-workout__btn {
-  background: green;
-  color: #fff;
+  @apply col-span-2 mb-2 place-self-end;
   width: 100%;
   display: block;
   text-align: center;
+  border: 1px solid #000;
+}
+.add-workout__form {
+  @apply col-span-4;
 }
 .main {
   @apply grid sm:grid-cols-2 lg:grid-cols-4 gap-5 p-4;
@@ -176,11 +182,10 @@ export default Vue.extend({
 }
 .main-setWorkoutBtn {
   @apply col-span-2;
-  background: #000;
-  color: #fff;
   display: block;
   text-align: center;
   cursor: pointer;
+  border: 1px solid #000;
 }
 .main-setWorkoutBtn.disable {
   pointer-events: none;
@@ -192,9 +197,8 @@ export default Vue.extend({
   font-size: 1.2em;
   display: block;
   text-align: center;
-  color: #fff;
-  background: gray;
   width: 2em;
+  border: 1px solid #000;
 }
 .main-unsetWorkoutBtn {
   background: red;

@@ -8,10 +8,10 @@
 - DONE: document how to use netlify functions (its already been documented)
 - DONE: add notification if post is success or fail
 - DONE: check why image bas64 is not going through
-- add workout items
+- DONE: add workout items
+- be able to save routines
 - shorten base64
-- improve UI UX and styling
-- improve Input Field, Implement Text Area Field component if possible
+- auto resize input/text area fields
 - find a way to load minimal workouts.. probably categorize by equipment
 
 ## Technical Backlog
