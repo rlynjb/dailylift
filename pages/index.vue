@@ -34,19 +34,21 @@
       </div>
     </div>
 
-    <div class="main"
-      v-for="(exercise, exerciseIndex) in exercises" :key="'e'+exerciseIndex">
-      <a class="main-setWorkoutBtn" @click="setWorkout(exercise)"
-        :class="disableWorkout(exercise) ? 'disable' : ''"
-      >
-        Add to Plan
-      </a>
-      <WorkoutCard
-        :exercise="exercise"
-        @input="updateWorkout"
-      />
-      <a class="main-deleteBtn"
-        @click="deleteWorkout(exercise)">x</a>
+    <div class="main">
+      <div class="main-card"
+        v-for="(exercise, exerciseIndex) in exercises" :key="'e'+exerciseIndex">
+        <WorkoutCard
+          :exercise="exercise"
+          @input="updateWorkout"
+        />
+        <a class="main-setWorkoutBtn" @click="setWorkout(exercise)"
+          :class="disableWorkout(exercise) ? 'disable' : ''"
+        >
+          Add to routine
+        </a>
+        <a class="main-deleteBtn"
+          @click="deleteWorkout(exercise)">x</a>
+      </div>
     </div>
   </div>
 </template>
@@ -166,17 +168,33 @@ export default Vue.extend({
 .main {
   @apply grid sm:grid-cols-2 lg:grid-cols-4 gap-5 p-4;
 }
+.main-card {
+  @apply grid grid-cols-4;
+}
+.workout-card {
+  @apply col-span-4;
+}
 .main-setWorkoutBtn {
+  @apply col-span-2;
   background: #000;
   color: #fff;
   display: block;
-  width: 100%;
   text-align: center;
   cursor: pointer;
 }
 .main-setWorkoutBtn.disable {
   pointer-events: none;
   background: grey;
+}
+.main-deleteBtn {
+  @apply col-span-2 place-self-end;
+  cursor: pointer;
+  font-size: 1.2em;
+  display: block;
+  text-align: center;
+  color: #fff;
+  background: gray;
+  width: 2em;
 }
 .main-unsetWorkoutBtn {
   background: red;
@@ -185,14 +203,5 @@ export default Vue.extend({
   width: 100%;
   text-align: center;
   cursor: pointer;
-}
-.main-deleteBtn {
-  cursor: pointer;
-  font-size: 1.2em;
-  display: block;
-  text-align: center;
-  color: #fff;
-  background: gray;
-  width: 2em;
 }
 </style>

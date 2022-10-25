@@ -10,8 +10,11 @@
     <div v-else>
       <img src="~/assets/images/kirby.jpg" />
 
-      <input type="file" id="myFile" name="filename"
-        @input="setImage">
+      <label class="file-upload">
+        <input type="file" id="myFile" name="filename"
+          @input="setImage">
+        Choose Image
+      </label>
     </div>
   </div>
 </template>
@@ -43,10 +46,13 @@ export default Vue.extend({
 .image-field {
   min-height: 12vw;
   width: 100%;
-  border: 1px solid lightgray;
 }
 .image-field__btn {
   background: grey;
   width: 100%;
+}
+.file-upload input {
+  overflow: hidden;
+  width: 0;
 }
 </style>

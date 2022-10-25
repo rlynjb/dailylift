@@ -23,7 +23,7 @@
       </small>
     </h3>
 
-    <button @click="() => toggleDetail = !toggleDetail">Detail</button>
+    <button class="detailBtn" @click="() => toggleDetail = !toggleDetail">Detail</button>
 
     <div class="workout-card__content"
       v-if="toggleDetail">
@@ -158,6 +158,11 @@ export default Vue.extend({
   @apply mt-1;
   font-size: 0.5em;
   display: block;
+}
+.detailBtn {
+  background: #e2e2e2;
+  width: fit-content;
+  padding: 0.2em 1em;
 }
 .workout-card__content {
   @apply col-span-12 grid grid-cols-2;
