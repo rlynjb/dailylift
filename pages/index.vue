@@ -34,20 +34,19 @@
       </div>
     </div>
 
-    <div class="main">
-      <div
-        v-for="(exercise, exerciseIndex) in exercises" :key="'e'+exerciseIndex">
-        <a class="main-setWorkoutBtn" @click="setWorkout(exercise)"
-          :class="disableWorkout(exercise) ? 'disable' : ''"
-        >
-          +
-        </a>
-        <WorkoutCard
-          :exercise="exercise"
-          @input="updateWorkout"
-        />
-        <a @click="deleteWorkout(exercise)">x</a>
-      </div>
+    <div class="main"
+      v-for="(exercise, exerciseIndex) in exercises" :key="'e'+exerciseIndex">
+      <a class="main-setWorkoutBtn" @click="setWorkout(exercise)"
+        :class="disableWorkout(exercise) ? 'disable' : ''"
+      >
+        Add to Plan
+      </a>
+      <WorkoutCard
+        :exercise="exercise"
+        @input="updateWorkout"
+      />
+      <a class="main-deleteBtn"
+        @click="deleteWorkout(exercise)">x</a>
     </div>
   </div>
 </template>
@@ -186,5 +185,14 @@ export default Vue.extend({
   width: 100%;
   text-align: center;
   cursor: pointer;
+}
+.main-deleteBtn {
+  cursor: pointer;
+  font-size: 1.2em;
+  display: block;
+  text-align: center;
+  color: #fff;
+  background: gray;
+  width: 2em;
 }
 </style>

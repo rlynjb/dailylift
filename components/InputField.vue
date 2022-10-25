@@ -1,11 +1,10 @@
 <template>
   <div class="input-field-container">
-    <input
+    <textarea rows="2"
       class="input-field"
-      type="text"
       :value="val"
-      @input="update(label, $event)"
-    />
+      @input="update(label, $event)">
+    </textarea>
   </div>
 </template>
 
@@ -33,7 +32,6 @@ export default Vue.extend({
 
 <style lang="postcss" scoped>
 .input-field {
-  border: 1px solid lightgray;
   padding: 0.1em 0.4em;
   width: 100%;
 }

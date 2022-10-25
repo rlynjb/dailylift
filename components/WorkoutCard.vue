@@ -1,6 +1,12 @@
 <template>
   <div class="workout-card">
-    <h2 class="workout-card__title">
+    <ImageField class="workout-card__image"
+      label="image"
+      v-model="exercise.image"
+      @input="update"
+    />
+
+    <h3 class="workout-card__title">
       <InputField
         class="workout-card__input"
         label="name"
@@ -15,13 +21,7 @@
           @input="update"
         />
       </small>
-    </h2>
-
-    <ImageField class="workout-card__image"
-      label="image"
-      v-model="exercise.image"
-      @input="update"
-    />
+    </h3>
 
     <button @click="() => toggleDetail = !toggleDetail">Detail</button>
 
@@ -147,18 +147,17 @@ export default Vue.extend({
 .workout-card {
   @apply grid grid-cols-12 p-4 gap-3 bg-primary;
 }
+.workout-card__image {
+  @apply col-span-5;
+}
 .workout-card__title {
-  @apply col-span-12 mb-4;
-  font-size: 1.4em;
+  @apply col-span-7 mb-4;
   line-height: 1.3;
 }
 .workout-card__title small {
   @apply mt-1;
   font-size: 0.5em;
   display: block;
-}
-.workout-card__image {
-  @apply col-span-12;
 }
 .workout-card__content {
   @apply col-span-12 grid grid-cols-2;
