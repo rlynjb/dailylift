@@ -41,13 +41,15 @@
           :exercise="exercise"
           @input="updateWorkout"
         />
-        <a class="main-setWorkoutBtn" @click="setWorkout(exercise)"
-          :class="disableWorkout(exercise) ? 'disable' : ''"
-        >
-          Add to routine
-        </a>
-        <a class="main-deleteBtn"
-          @click="deleteWorkout(exercise)">x</a>
+        <div class="main-card__options">
+          <a class="main-setWorkoutBtn" @click="setWorkout(exercise)"
+            :class="disableWorkout(exercise) ? 'disable' : ''"
+          >
+            add
+          </a>
+          <a class="main-deleteBtn"
+            @click="deleteWorkout(exercise)">delete</a>
+        </div>
       </div>
     </div>
   </div>
@@ -180,25 +182,27 @@ export default Vue.extend({
 .workout-card {
   @apply col-span-4;
 }
+.main-card__options {
+  @apply col-start-3 col-span-2;
+  text-align: right;
+}
 .main-setWorkoutBtn {
-  @apply col-span-2;
-  display: block;
+  @apply p-1 mr-1;
   text-align: center;
   cursor: pointer;
   border: 1px solid #000;
+  font-size: 0.8em;
 }
 .main-setWorkoutBtn.disable {
   pointer-events: none;
   background: grey;
 }
 .main-deleteBtn {
-  @apply col-span-2 place-self-end;
+  @apply p-1;
   cursor: pointer;
-  font-size: 1.2em;
-  display: block;
   text-align: center;
-  width: 2em;
   border: 1px solid #000;
+  font-size: 0.8em;
 }
 .main-unsetWorkoutBtn {
   background: red;
