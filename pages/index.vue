@@ -11,7 +11,7 @@
     <div class="todays-workout">
       <div class="todays-workout__item"
         v-for="(exercise, exerciseIndex) in todaysWorkout" :key="'e'+exerciseIndex">
-        <a class="main-unsetWorkoutBtn" @click="unsetWorkout(exerciseIndex)">-</a>
+        <a class="main-unsetWorkoutBtn" @click="unsetWorkout(exerciseIndex)">remove</a>
         <WorkoutCard
           :exercise="exercise"
           @input="updateWorkout"
