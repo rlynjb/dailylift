@@ -2,6 +2,7 @@
   <div class="input-field-container">
     <textarea rows="2"
       class="input-field"
+      :placeholder="placeholder"
       :value="val"
       @input="update(label, $event)">
     </textarea>
@@ -21,6 +22,7 @@ export default Vue.extend({
   props: {
     label: String,
     val: String,
+    placeholder: String,
   },
   methods: {
     update(key: any, val: any) {

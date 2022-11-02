@@ -12,6 +12,7 @@
         label="name"
         :val="exercise.name"
         @input="update"
+        placeholder="Name of Workout"
       />
       <small>
         <InputField
@@ -19,10 +20,18 @@
           label="muscles"
           :val="exercise.muscles"
           @input="update"
+          placeholder="ex. Abs, Bicep, Tricep, Glutes, etc"
+        />
+      </small>
+      <small>
+        <InputField
+          class="workout-card__input"
+          placeholder="ex. set1-10reps, set2-10reps, 2x10"
         />
       </small>
     </h3>
 
+    <!--
     <button class="detailBtn" @click="() => toggleDetail = !toggleDetail">Detail</button>
 
     <div class="workout-card__content"
@@ -83,6 +92,7 @@
       />
       </div>
     </div>
+    -->
   </div>
 </template>
 
@@ -151,8 +161,9 @@ export default Vue.extend({
   @apply col-span-5;
 }
 .workout-card__title {
-  @apply col-span-7 mb-4;
+  @apply col-span-7;
   line-height: 1.3;
+  font-size: 0.9em;
 }
 .workout-card__title small {
   @apply mt-1;

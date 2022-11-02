@@ -1,21 +1,38 @@
 <template>
   <div class="index-page">
     <notify v-model="notifyMsg" />
-
     <div class="header">
       <img class="header__logo"
         src="~/static/Daily.png" />
     </div>
 
     <h3 class="todays-workout__title">Routines</h3>
+
+    <div class="routines">
+      <div class="routine">
+        <img src="~/assets/images/kirby.jpg" />
+        <h6>routine 1</h6>
+      </div>
+      <div class="routine">
+        <img src="~/assets/images/kirby.jpg" />
+        <h6>routine 1</h6>
+      </div>
+    </div>
+
     <div class="todays-workout">
+      <button @click="saveRoutine(todaysWorkout)">save routine</button>
+
       <div class="todays-workout__item"
         v-for="(exercise, exerciseIndex) in todaysWorkout" :key="'e'+exerciseIndex">
-        <a class="main-unsetWorkoutBtn" @click="unsetWorkout(exerciseIndex)">remove</a>
+        <b class="main-order">
+          {{ exerciseIndex + 1 }}
+        </b>
         <WorkoutCard
           :exercise="exercise"
           @input="updateWorkout"
         />
+
+        <a class="main-unsetWorkoutBtn" @click="unsetWorkout(exerciseIndex)">remove</a>
       </div>
     </div>
 
@@ -42,9 +59,7 @@
           @input="updateWorkout"
         />
         <div class="main-card__options">
-          <a class="main-setWorkoutBtn" @click="setWorkout(exercise)"
-            :class="disableWorkout(exercise) ? 'disable' : ''"
-          >
+          <a class="main-setWorkoutBtn" @click="setWorkout(exercise)">
             add
           </a>
           <a class="main-deleteBtn"
@@ -77,6 +92,11 @@ export default Vue.extend({
   },
 
   methods: {
+    saveRoutine(routines: any) {
+      // save workout IDs and a name in routines collection
+      // save as array
+      console.log(routines)
+    },
     async createWorkout(data: any) {
       return await this.$axios.$post(
         '/.netlify/functions/create_workout',
@@ -131,12 +151,6 @@ export default Vue.extend({
         this.notifyMsg = `Delete Workout FAIL: ${err}`;
       });
     },
-
-    disableWorkout(val: any) {
-      return this.todaysWorkout.find((exercise) => {
-        return val.name === exercise.name;
-      });
-    },
     setWorkout(val: Object) {
       this.todaysWorkout.push(val);      
     },
@@ -154,8 +168,12 @@ export default Vue.extend({
 .header__logo {
   max-width: 15em;
 }
+.routines {
+  @apply grid grid-cols-4 p-4 gap-3;
+}
 .todays-workout {
   @apply grid sm:grid-cols-2 lg:grid-cols-4 gap-5 p-4;
+  background: #eeeeee;
 }
 .todays-workout__title {
   @apply p-4;
@@ -191,7 +209,7 @@ export default Vue.extend({
   text-align: center;
   cursor: pointer;
   border: 1px solid #000;
-  font-size: 0.8em;
+  font-size: 0.7em;
 }
 .main-setWorkoutBtn.disable {
   pointer-events: none;
@@ -202,14 +220,23 @@ export default Vue.extend({
   cursor: pointer;
   text-align: center;
   border: 1px solid #000;
-  font-size: 0.8em;
+  font-size: 0.7em;
+}
+
+.todays-workout__item {
+  @apply grid grid-cols-12;
+}
+.main-order {
+  @apply col-span-1;
+}
+.todays-workout__item .workout-card {
+  @apply col-span-11;
 }
 .main-unsetWorkoutBtn {
-  background: red;
-  color: #fff;
-  display: block;
-  width: 100%;
+  @apply col-span-4 col-start-11;
   text-align: center;
   cursor: pointer;
+  border: 1px solid #000;
+  font-size: 0.7em;
 }
 </style>
