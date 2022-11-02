@@ -31,7 +31,6 @@
           :exercise="exercise"
           @input="updateWorkout"
         />
-
         <a class="main-unsetWorkoutBtn" @click="unsetWorkout(exerciseIndex)">remove</a>
       </div>
     </div>
@@ -93,8 +92,13 @@ export default Vue.extend({
 
   methods: {
     saveRoutine(routines: any) {
-      // save workout IDs and a name in routines collection
-      // save as array
+      /**
+       * save routine object in routine collection
+       * {
+       *    name: '',
+       *    workouts: [ workout IDs]
+       * }
+      */
       console.log(routines)
     },
     async createWorkout(data: any) {
