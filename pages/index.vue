@@ -25,14 +25,16 @@
 
       <div class="todays-workout__item"
         v-for="(exercise, exerciseIndex) in todaysWorkout" :key="'e'+exerciseIndex">
-        <b class="main-order">
-          {{ exerciseIndex + 1 }}
-        </b>
+        <div class="main-order">
+          <b>{{ exerciseIndex + 1 }}</b>
+          <br/>
+          <br/>
+          <a class="main-unsetWorkoutBtn" @click="unsetWorkout(exerciseIndex)">X</a>
+        </div>
         <WorkoutCard
           :exercise="exercise"
           @input="updateWorkout"
         />
-        <a class="main-unsetWorkoutBtn" @click="unsetWorkout(exerciseIndex)">remove</a>
       </div>
     </div>
 
@@ -60,7 +62,7 @@
         />
         <div class="main-card__options">
           <a class="main-setWorkoutBtn" @click="setWorkout(exercise)">
-            add
+            +
           </a>
           <a class="main-deleteBtn"
             @click="deleteWorkout(exercise)">delete</a>
@@ -157,7 +159,8 @@ export default Vue.extend({
       });
     },
     setWorkout(val: Object) {
-      this.todaysWorkout.push(val);      
+      this.todaysWorkout.push(val);
+      this.notifyMsg = `Workout Added to Routine`;
     },
     unsetWorkout(index: number) {
       this.todaysWorkout.splice(index, 1);
@@ -200,14 +203,13 @@ export default Vue.extend({
   @apply grid sm:grid-cols-2 lg:grid-cols-4 gap-5 p-4;
 }
 .main-card {
-  @apply grid grid-cols-4;
+  @apply grid grid-cols-12;
 }
 .workout-card {
-  @apply col-span-4;
+  @apply col-span-11;
 }
 .main-card__options {
-  @apply col-start-3 col-span-2;
-  text-align: right;
+  @apply col-span-1;
 }
 .main-setWorkoutBtn {
   @apply p-1 mr-1;
@@ -233,15 +235,17 @@ export default Vue.extend({
 }
 .main-order {
   @apply col-span-1;
+  text-align: center;
 }
 .todays-workout__item .workout-card {
   @apply col-span-11;
 }
 .main-unsetWorkoutBtn {
-  @apply col-span-4 col-start-11;
+  @apply col-span-4 col-start-11 place-self-end;
   text-align: center;
   cursor: pointer;
   border: 1px solid #000;
   font-size: 0.7em;
+  padding: 5px;
 }
 </style>

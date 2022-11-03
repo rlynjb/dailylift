@@ -27,6 +27,9 @@
         <InputField
           class="workout-card__input"
           placeholder="ex. set1-10reps, set2-10reps, 2x10"
+          :val="exercise.sets"
+          label="sets"
+          @input="update"
         />
       </small>
     </h3>
@@ -163,7 +166,7 @@ export default Vue.extend({
 .workout-card__title {
   @apply col-span-7;
   line-height: 1.3;
-  font-size: 0.9em;
+  font-size: 0.8em;
 }
 .workout-card__title small {
   @apply mt-1;
