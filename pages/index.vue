@@ -21,6 +21,7 @@
 
     <div class="todays-workout">
       <button @click="saveRoutine(todaysWorkout)">save routine</button>
+      or load a routine here
 
       <div class="todays-workout__item"
         v-for="(exercise, exerciseIndex) in todaysWorkout" :key="'e'+exerciseIndex">

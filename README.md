@@ -9,6 +9,7 @@
 - DONE: add notification if post is success or fail
 - DONE: check why image bas64 is not going through
 - DONE: add workout items
+- tie up new set rep field to db and generate new dist and deploy
 - be able to save routines
 - shorten base64
 - auto resize input/text area fields
