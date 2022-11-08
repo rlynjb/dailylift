@@ -11,6 +11,9 @@
 - DONE: add workout items
 - DONE: tie up new set rep field to db and generate new dist and deploy
 - DONE: be able to save routines
+- implement delete routine
+- fix edge cases with adding workout and switching routines and creating new routine
+- implement able to re-order workouts
 - shorten base64
 - auto resize input/text area fields
 - find a way to load minimal workouts.. probably categorize by equipment
