@@ -166,11 +166,11 @@ export default Vue.extend({
 .workout-card__title {
   @apply col-span-7;
   line-height: 1.3;
-  font-size: 0.8em;
+  font-size: 0.7em;
 }
 .workout-card__title small {
   @apply mt-1;
-  font-size: 0.5em;
+  font-size: 0.6em;
   display: block;
 }
 .detailBtn {

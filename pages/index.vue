@@ -9,22 +9,34 @@
     <h3 class="todays-workout__title">Routines</h3>
 
     <div class="routines">
-      <div class="routine">
+      <div class="routine"
+        v-for="(routine, routineIndex) in routines" :key="'r'+routineIndex">
         <img src="~/assets/images/kirby.jpg" />
-        <h6>routine 1</h6>
-      </div>
-      <div class="routine">
-        <img src="~/assets/images/kirby.jpg" />
-        <h6>routine 1</h6>
+        <h6 @click="loadRoutine(routine)">{{ routine.name }}</h6>
       </div>
     </div>
 
-    <div class="todays-workout">
-      <button @click="saveRoutine(todaysWorkout)">save routine</button>
-      or load a routine here
+    <div class="todays-workout"
+      v-if="selectedRoutine.workouts.length">
+      <InputField
+        v-if="selectedRoutine.name === ''"
+        class="routine__input"
+        label="name"
+        :val="selectedRoutine.name"
+        @input="createRoutine($event, selectedRoutine.workouts)"
+        placeholder="Type Routine name to save"
+      />
+      <InputField
+        v-else
+        class="routine__input"
+        label="name"
+        :val="selectedRoutine.name"
+        @input="updateRoutine($event, selectedRoutine)"
+        placeholder="Type Routine name to save"
+      />
 
       <div class="todays-workout__item"
-        v-for="(exercise, exerciseIndex) in todaysWorkout" :key="'e'+exerciseIndex">
+        v-for="(exercise, exerciseIndex) in selectedRoutine.workouts" :key="'e'+exerciseIndex">
         <div class="main-order">
           <b>{{ exerciseIndex + 1 }}</b>
           <br/>
@@ -76,6 +88,7 @@
 import Vue from 'vue'
 import { Workouts } from '~/lib/data'
 import Notify from '../components/Notify.vue';
+import { debounce } from 'lodash'
 
 export default Vue.extend({
   components: { Notify },
@@ -83,27 +96,62 @@ export default Vue.extend({
   data: () => {
     return {
       exercises: Workouts,
-      todaysWorkout: [] as any[],
+      //todaysWorkout: [] as any[],
       displayAddWorkoutForm: false,
       notifyMsg: '',
+      selectedRoutine: {
+        id: '',
+        name: '',
+        workouts: []
+      },
+      routines: [],
     }
   },
 
   mounted() {
     this.readWorkouts();
+    this.readRoutines();
+  },
+
+  created() {
+    this.createRoutine = debounce(this.createRoutine, 2000);
+  },
+
+  watch: {
+    "selectedRoutine": {
+      handler(val) {
+        this.updateRoutine(null, val);
+      },
+      deep: true,
+    }
   },
 
   methods: {
-    saveRoutine(routines: any) {
+    loadRoutine(obj: any) {
+      this.selectedRoutine = obj;
+    },
+    async createRoutine($event, workouts: any) {
       /**
        * save routine object in routine collection
-       * {
-       *    name: '',
-       *    workouts: [ workout IDs]
-       * }
       */
-      console.log(routines)
+      const data = {
+        name: $event.val,
+        workouts
+      }
+      return await this.$axios.$post(
+        '/.netlify/functions/create_routine',
+        JSON.stringify(data)
+      )
+      .then(res => {
+        this.notifyMsg = `New Routine CREATED`;
+
+        this.readRoutines();
+      })
+      .catch(err => {
+        this.notifyMsg = `Create New Routine FAIL: ${err}`;
+      });
     },
+
     async createWorkout(data: any) {
       return await this.$axios.$post(
         '/.netlify/functions/create_workout',
@@ -124,11 +172,21 @@ export default Vue.extend({
         '/.netlify/functions/read_workouts'
       )
       .then(res => {
-        // set items in this.exercises
         this.exercises = res;
       })
       .catch(err => {
         this.notifyMsg = `Read Workouts FAIL: ${ err }`;
+      });
+    },
+    async readRoutines() {
+      return await this.$axios.$get(
+        '/.netlify/functions/read_routines'
+      )
+      .then(res => {
+        this.routines = res;
+      })
+      .catch(err => {
+        this.notifyMsg = `Read Routines FAIL: ${ err }`;
       });
     },
     async updateWorkout(data: any) {
@@ -137,12 +195,28 @@ export default Vue.extend({
         data
       )
       .then(res => {
-        // find item in this.exercises and replace with latest respond data
-
         this.notifyMsg = `Workout UPDATED`;
       })
       .catch(err => {
         this.notifyMsg = `Update Workout FAIL: ${err}`;
+      });
+    },
+    async updateRoutine($event: any, obj: any) {
+      const newData = {
+        id: obj.id,
+        name: null ? this.selectedRoutine.name : obj.val,
+        workouts: obj.workouts
+      }
+      return await this.$axios.$put(
+        `/.netlify/functions/update_routine/${obj.id}`,
+        newData
+      )
+      .then(res => {
+        this.readRoutines();
+        this.notifyMsg = `Routine UPDATED`;
+      })
+      .catch(err => {
+        this.notifyMsg = `Update Routine FAIL: ${err}`;
       });
     },
     async deleteWorkout(data: any) {
@@ -159,11 +233,11 @@ export default Vue.extend({
       });
     },
     setWorkout(val: Object) {
-      this.todaysWorkout.push(val);
+      this.selectedRoutine.workouts.push(val);
       this.notifyMsg = `Workout Added to Routine`;
     },
     unsetWorkout(index: number) {
-      this.todaysWorkout.splice(index, 1);
+      this.selectedRoutine.workouts.splice(index, 1);
     },
   },
 })
