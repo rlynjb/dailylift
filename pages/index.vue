@@ -102,9 +102,9 @@ export default Vue.extend({
       selectedRoutine: {
         id: '',
         name: '',
-        workouts: []
+        workouts: [] as any[]
       },
-      routines: [],
+      routines: [] as any[],
     }
   },
 
@@ -114,7 +114,7 @@ export default Vue.extend({
   },
 
   created() {
-    this.createRoutine = debounce(this.createRoutine, 2000);
+    this.debounceCreateRoutine = debounce(this.debounceCreateRoutine, 2000);
   },
 
   watch: {
@@ -130,7 +130,12 @@ export default Vue.extend({
     loadRoutine(obj: any) {
       this.selectedRoutine = obj;
     },
-    async createRoutine($event, workouts: any) {
+    debounceCreateRoutine() {
+      this.createRoutine(null, null);
+    },
+    async createRoutine($event: any, workouts: any) {
+      if ($event === null && workouts === null) return;
+
       /**
        * save routine object in routine collection
       */
@@ -232,7 +237,7 @@ export default Vue.extend({
         this.notifyMsg = `Delete Workout FAIL: ${err}`;
       });
     },
-    setWorkout(val: Object) {
+    setWorkout(val: any) {
       this.selectedRoutine.workouts.push(val);
       this.notifyMsg = `Workout Added to Routine`;
     },
