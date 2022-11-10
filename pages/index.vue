@@ -11,19 +11,23 @@
     <div class="routines">
       <div class="routine"
         v-for="(routine, routineIndex) in routines" :key="'r'+routineIndex">
-        <img src="~/assets/images/kirby.jpg" />
         <h6 @click="loadRoutine(routine)">{{ routine.name }}</h6>
       </div>
     </div>
 
     <div class="todays-workout"
       v-if="selectedRoutine.workouts.length">
+      <a class="deleteRoutineBtn"
+        @click="deleteRoutine(selectedRoutine)">delete</a>
+      <a class="closeRoutineBtn"
+        @click="closeRoutine">close</a>
+
       <InputField
         v-if="selectedRoutine.name === ''"
         class="routine__input"
         label="name"
         :val="selectedRoutine.name"
-        @input="createRoutine($event, selectedRoutine.workouts)"
+        @input="debounceCreateRoutine($event, selectedRoutine.workouts)"
         placeholder="Type Routine name to save"
       />
       <InputField
@@ -130,8 +134,19 @@ export default Vue.extend({
     loadRoutine(obj: any) {
       this.selectedRoutine = obj;
     },
-    debounceCreateRoutine() {
-      this.createRoutine(null, null);
+    closeRoutine() {
+      this.selectedRoutine = {
+        id: '',
+        name: '',
+        workouts: [] as any[]
+      }
+    },
+    /*
+      NOTE:
+      really hacky way to resolve typescript with debounce and async issue
+    */
+    debounceCreateRoutine($event: any, workouts: any) {
+      this.createRoutine($event, workouts);
     },
     async createRoutine($event: any, workouts: any) {
       if ($event === null && workouts === null) return;
@@ -232,9 +247,23 @@ export default Vue.extend({
         this.notifyMsg = `Workout DELETED`;
 
         this.readWorkouts();
+        this.closeRoutine();
       })
       .catch(err => {
         this.notifyMsg = `Delete Workout FAIL: ${err}`;
+      });
+    },
+    async deleteRoutine(data: any) {
+      return await this.$axios.$delete(
+        `/.netlify/functions/delete_routine/${data.id}`
+      )
+      .then(res => {
+        this.notifyMsg = `Routine DELETED`;
+
+        this.readRoutines();
+      })
+      .catch(err => {
+        this.notifyMsg = `Delete Routine FAIL: ${err}`;
       });
     },
     setWorkout(val: any) {
@@ -257,6 +286,12 @@ export default Vue.extend({
 }
 .routines {
   @apply grid grid-cols-4 p-4 gap-3;
+}
+.routine {
+  background: #efefef;
+  padding: 10px;
+  line-height: 1;
+  color: gray;
 }
 .todays-workout {
   @apply grid sm:grid-cols-2 lg:grid-cols-4 gap-5 p-4;
