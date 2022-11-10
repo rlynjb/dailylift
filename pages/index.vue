@@ -249,11 +249,9 @@ export default Vue.extend({
       });
     },
     async updateRoutine($event: any, obj: any) {
-      if (!$event) return;
-
       const newData = {
         id: obj.id,
-        name: $event.val,
+        name: $event ? $event.val : obj.name,
         workouts: obj.workouts
       }
       return await this.$axios.$put(
