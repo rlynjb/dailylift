@@ -18,9 +18,17 @@
     <div class="todays-workout"
       v-if="selectedRoutine.workouts.length">
       <a class="deleteRoutineBtn"
-        @click="deleteRoutine(selectedRoutine)">delete</a>
+        @click="deleteRoutine(selectedRoutine)">
+        <span class="material-symbols-outlined">
+          delete
+        </span>  
+      </a>
       <a class="closeRoutineBtn"
-        @click="closeRoutine">close</a>
+        @click="closeRoutine">
+        <span class="material-symbols-outlined">
+          close
+        </span>  
+      </a>
 
       <InputField
         v-if="selectedRoutine.name === ''"
@@ -45,7 +53,11 @@
           <b>{{ exerciseIndex + 1 }}</b>
           <br/>
           <br/>
-          <a class="main-unsetWorkoutBtn" @click="unsetWorkout(exerciseIndex)">X</a>
+          <a class="main-unsetWorkoutBtn" @click="unsetWorkout(exerciseIndex)">
+            <span class="material-symbols-outlined">
+              delete
+            </span>
+          </a>
         </div>
         <WorkoutCard
           :exercise="exercise"
@@ -57,8 +69,17 @@
     <div class="add-workout">
       <a class="add-workout__btn"
         @click="() => displayAddWorkoutForm = !displayAddWorkoutForm">
-        <span v-if="!displayAddWorkoutForm">Add Workout</span>
-        <span v-else>Cancel Add</span>
+        <span v-if="!displayAddWorkoutForm">
+          <span class="material-symbols-outlined">
+            add
+          </span>
+          workout
+        </span>
+        <span v-else>
+          <span class="material-symbols-outlined">
+            close
+          </span>
+        </span>
       </a>
 
       <div class="add-workout__form"
@@ -78,10 +99,16 @@
         />
         <div class="main-card__options">
           <a class="main-setWorkoutBtn" @click="setWorkout(exercise)">
-            +
+            <span class="material-symbols-outlined">
+              add
+            </span>
           </a>
           <a class="main-deleteBtn"
-            @click="deleteWorkout(exercise)">delete</a>
+            @click="deleteWorkout(exercise)">
+            <span class="material-symbols-outlined">
+              delete
+            </span>
+          </a>
         </div>
       </div>
     </div>
@@ -222,9 +249,11 @@ export default Vue.extend({
       });
     },
     async updateRoutine($event: any, obj: any) {
+      if (!$event) return;
+
       const newData = {
         id: obj.id,
-        name: null ? this.selectedRoutine.name : obj.val,
+        name: $event.val,
         workouts: obj.workouts
       }
       return await this.$axios.$put(
@@ -292,23 +321,27 @@ export default Vue.extend({
   padding: 10px;
   line-height: 1;
   color: gray;
+  word-break: break-word;
+  font-size: 0.9em;
 }
 .todays-workout {
   @apply grid sm:grid-cols-2 lg:grid-cols-4 gap-5 p-4;
   background: #eeeeee;
 }
+.deleteRoutineBtn {
+  @apply col-span-1;
+}
+.closeRoutineBtn {
+  @apply col-span-1;
+}
 .todays-workout__title {
-  @apply p-4;
+  @apply p-4 pb-0;
 }
 .add-workout {
   @apply grid grid-cols-4 gap-5 p-4;
 }
 .add-workout__btn {
-  @apply col-span-2 mb-2 place-self-end;
-  width: 100%;
-  display: block;
-  text-align: center;
-  border: 1px solid #000;
+  @apply col-span-2;
 }
 .add-workout__form {
   @apply col-span-4;
@@ -326,22 +359,16 @@ export default Vue.extend({
   @apply col-span-1;
 }
 .main-setWorkoutBtn {
-  @apply p-1 mr-1;
-  text-align: center;
-  cursor: pointer;
-  border: 1px solid #000;
-  font-size: 0.7em;
+  @apply mb-8;
+  display: block;
 }
 .main-setWorkoutBtn.disable {
   pointer-events: none;
   background: grey;
 }
 .main-deleteBtn {
-  @apply p-1;
+  @apply place-self-end;
   cursor: pointer;
-  text-align: center;
-  border: 1px solid #000;
-  font-size: 0.7em;
 }
 
 .todays-workout__item {
@@ -356,10 +383,5 @@ export default Vue.extend({
 }
 .main-unsetWorkoutBtn {
   @apply col-span-4 col-start-11 place-self-end;
-  text-align: center;
-  cursor: pointer;
-  border: 1px solid #000;
-  font-size: 0.7em;
-  padding: 5px;
 }
 </style>
