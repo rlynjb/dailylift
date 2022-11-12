@@ -14,7 +14,7 @@
 - DONE: implement delete routine
 - DONE: fix edge cases with adding workout and switching routines and creating new routine
 - if workout has been updated, update workout in routine as well
-- leave add workout card out instead of toggling for simpler ui/ux
+- DONE: leave add workout card out instead of toggling for simpler ui/ux
 - sort workout items base on latest added
 - implement able to re-order workouts
 - add a sort/filter feature by equipment, muscle worked

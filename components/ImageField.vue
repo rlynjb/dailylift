@@ -1,21 +1,14 @@
 <template>
   <div class="image-field">
     <div v-if="value">
-      <!--
-      <img :src="require(`~/assets/images/${ value }`)" />
-      -->
       <img :src="value" />
     </div>
 
-    <div v-else>
+    <label v-else class="file-upload">
+      <input type="file" id="myFile" name="filename"
+        @input="setImage">
       <img src="~/assets/images/kirby.jpg" />
-
-      <label class="file-upload">
-        <input type="file" id="myFile" name="filename"
-          @input="setImage">
-        Choose Image
-      </label>
-    </div>
+    </label>
   </div>
 </template>
 
@@ -43,16 +36,9 @@ export default Vue.extend({
 </script>
 
 <style lang="postcss" scoped>
-.image-field {
-  min-height: 12vw;
-  width: 100%;
-}
-.image-field__btn {
-  background: grey;
-  width: 100%;
-}
 .file-upload input {
   overflow: hidden;
   width: 0;
+  display: none;
 }
 </style>

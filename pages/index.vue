@@ -66,31 +66,13 @@
       </div>
     </div>
 
-    <div class="add-workout">
-      <a class="add-workout__btn"
-        @click="() => displayAddWorkoutForm = !displayAddWorkoutForm">
-        <span v-if="!displayAddWorkoutForm">
-          <span class="material-symbols-outlined">
-            add
-          </span>
-          workout
-        </span>
-        <span v-else>
-          <span class="material-symbols-outlined">
-            close
-          </span>
-        </span>
-      </a>
-
-      <div class="add-workout__form"
-        v-if="displayAddWorkoutForm">
+    <div class="main">
+      <div class="main-card">
         <WorkoutCard
           @input="createWorkout"
         />
       </div>
-    </div>
 
-    <div class="main">
       <div class="main-card"
         v-for="(exercise, exerciseIndex) in exercises" :key="'e'+exerciseIndex">
         <WorkoutCard
@@ -323,7 +305,7 @@ export default Vue.extend({
   font-size: 0.9em;
 }
 .todays-workout {
-  @apply grid sm:grid-cols-2 lg:grid-cols-4 gap-5 p-4;
+  @apply p-4;
   background: #eeeeee;
 }
 .deleteRoutineBtn {
@@ -334,15 +316,6 @@ export default Vue.extend({
 }
 .todays-workout__title {
   @apply p-4 pb-0;
-}
-.add-workout {
-  @apply grid grid-cols-4 gap-5 p-4;
-}
-.add-workout__btn {
-  @apply col-span-2;
-}
-.add-workout__form {
-  @apply col-span-4;
 }
 .main {
   @apply grid sm:grid-cols-2 lg:grid-cols-4 gap-5 p-4;
@@ -370,7 +343,7 @@ export default Vue.extend({
 }
 
 .todays-workout__item {
-  @apply grid grid-cols-12;
+  @apply grid grid-cols-12 mb-2;
 }
 .main-order {
   @apply col-span-1;
