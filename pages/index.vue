@@ -75,10 +75,6 @@
 
       <div class="main-card"
         v-for="(exercise, exerciseIndex) in exercises" :key="'e'+exerciseIndex">
-        <WorkoutCard
-          :exercise="exercise"
-          @input="updateWorkout"
-        />
         <div class="main-card__options">
           <a class="main-setWorkoutBtn" @click="setWorkout(exercise)">
             <span class="material-symbols-outlined">
@@ -92,6 +88,11 @@
             </span>
           </a>
         </div>
+
+        <WorkoutCard
+          :exercise="exercise"
+          @input="updateWorkout"
+        />
       </div>
     </div>
   </div>
@@ -305,14 +306,17 @@ export default Vue.extend({
   font-size: 0.9em;
 }
 .todays-workout {
-  @apply p-4;
+  @apply grid grid-cols-4 p-4;
   background: #eeeeee;
 }
 .deleteRoutineBtn {
   @apply col-span-1;
 }
 .closeRoutineBtn {
-  @apply col-span-1;
+  @apply col-span-1 col-start-4 text-right;
+}
+.routine__input {
+  @apply col-span-4;
 }
 .todays-workout__title {
   @apply p-4 pb-0;
@@ -343,7 +347,7 @@ export default Vue.extend({
 }
 
 .todays-workout__item {
-  @apply grid grid-cols-12 mb-2;
+  @apply col-span-4 grid grid-cols-12 mb-2;
 }
 .main-order {
   @apply col-span-1;
