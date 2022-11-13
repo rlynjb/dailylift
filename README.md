@@ -13,14 +13,17 @@
 - DONE: be able to save routines
 - DONE: implement delete routine
 - DONE: fix edge cases with adding workout and switching routines and creating new routine
-- if workout has been updated, update workout in routine as well
 - DONE: leave add workout card out instead of toggling for simpler ui/ux
+- WIP: implement able to re-order workouts
+- add simple login system, only i can access
 - sort workout items base on latest added
-- implement able to re-order workouts
+- if workout has been updated, update workout in routine as well
 - add a sort/filter feature by equipment, muscle worked
 - possibly a search feature as well
 - shorten base64
 - auto resize input/text area fields
+
+
 
 ## Technical Backlog
 - review setting up hosting, serverless (write up steps if necessary)
@@ -29,6 +32,8 @@
 - learn how to tie up typescript with data calls on netlify functions, clean up and organize
 - implement auth with faunadb and netlify functions
 - implement object storage for images/media
+- learn about authentication with netlify: https://www.netlify.com/blog/2021/12/30/manage-and-authenticate-users-with-netlify-identity/
+
 
 ## Upcoming Features:
 - superset (be able to link 2 workouts)

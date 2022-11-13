@@ -16,7 +16,6 @@
     </div>
 
     <div class="todays-workout"
-      ref="workoutList"
       v-show="selectedRoutine.workouts.length">
       <a class="deleteRoutineBtn"
         @click="deleteRoutine(selectedRoutine)">
@@ -48,22 +47,24 @@
         placeholder="Type Routine name to save"
       />
 
-      <div class="todays-workout__item"
-        v-for="(exercise, exerciseIndex) in selectedRoutine.workouts" :key="'e'+exerciseIndex">
-        <div class="main-order">
-          <b>{{ exerciseIndex + 1 }}</b>
-          <br/>
-          <br/>
-          <a class="main-unsetWorkoutBtn" @click="unsetWorkout(exerciseIndex)">
-            <span class="material-symbols-outlined">
-              delete
-            </span>
-          </a>
+      <div ref="workoutList" class="routine-workout-list">
+        <div class="todays-workout__item"
+          v-for="(exercise, exerciseIndex) in selectedRoutine.workouts" :key="'e'+exerciseIndex">
+          <div class="main-order">
+            <b>{{ exerciseIndex + 1 }}</b>
+            <br/>
+            <br/>
+            <a class="main-unsetWorkoutBtn" @click="unsetWorkout(exerciseIndex)">
+              <span class="material-symbols-outlined">
+                delete
+              </span>
+            </a>
+          </div>
+          <WorkoutCard
+            :exercise="exercise"
+            @input="updateWorkout"
+          />
         </div>
-        <WorkoutCard
-          :exercise="exercise"
-          @input="updateWorkout"
-        />
       </div>
     </div>
 
@@ -135,6 +136,7 @@ export default Vue.extend({
     this.debounceCreateRoutine = debounce(this.debounceCreateRoutine, 2000);
   },
 
+  /*
   watch: {
     "selectedRoutine": {
       handler(val) {
@@ -143,20 +145,39 @@ export default Vue.extend({
       deep: true,
     }
   },
+  */
 
   methods: {
     loadRoutine(obj: any) {
+      this.selectedRoutine = obj;
+
+      const that = this;
+
       // fix for refs undefined: https://stackoverflow.com/questions/54355375/vue-js-refs-are-undefined-even-though-this-refs-shows-theyre-there
       if (this.$refs['workoutList']) {
         const el = this.$refs.workoutList;
         const sortable = Sortable.create(el, {
-          onUpdate: function(evt) {
-            console.log(evt)
+          onChange: function(evt: any) {
+            // find object from list and use id and index to update list
+            //console.log(evt.oldIndex, evt.newIndex)
+            //console.log(that.selectedRoutine.workouts)
+
+            let list = that.selectedRoutine.workouts;
+            // store old item to a temp var
+            let oldItem = list[evt.oldIndex];
+            // place new item to old item index
+            list[evt.oldIndex] = list[evt.newIndex];
+            // place old item to new item index
+            list[evt.newIndex] = oldItem;
+
+            that.selectedRoutine.workouts = list;
+            
+            that.updateRoutine(null, that.selectedRoutine);
           }
         });
       }
 
-      this.selectedRoutine = obj;
+      
     },
 
     closeRoutine() {
@@ -257,7 +278,9 @@ export default Vue.extend({
         newData
       )
       .then(res => {
+        this.$set(this.$data, 'selectedRoutine', res);
         this.readRoutines();
+
         this.notifyMsg = `Routine UPDATED`;
       })
       .catch(err => {
@@ -335,6 +358,9 @@ export default Vue.extend({
 }
 .todays-workout__title {
   @apply p-4 pb-0;
+}
+.routine-workout-list {
+  @apply col-span-4;
 }
 .main {
   @apply grid sm:grid-cols-2 lg:grid-cols-4 gap-5 p-4;
