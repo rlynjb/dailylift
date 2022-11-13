@@ -16,7 +16,8 @@
     </div>
 
     <div class="todays-workout"
-      v-if="selectedRoutine.workouts.length">
+      ref="workoutList"
+      v-show="selectedRoutine.workouts.length">
       <a class="deleteRoutineBtn"
         @click="deleteRoutine(selectedRoutine)">
         <span class="material-symbols-outlined">
@@ -103,6 +104,7 @@ import Vue from 'vue'
 import { Workouts } from '~/lib/data'
 import Notify from '../components/Notify.vue';
 import { debounce } from 'lodash'
+import Sortable from 'sortablejs';
 
 export default Vue.extend({
   components: { Notify },
@@ -121,6 +123,8 @@ export default Vue.extend({
       routines: [] as any[],
     }
   },
+
+
 
   mounted() {
     this.readWorkouts();
@@ -142,8 +146,19 @@ export default Vue.extend({
 
   methods: {
     loadRoutine(obj: any) {
+      // fix for refs undefined: https://stackoverflow.com/questions/54355375/vue-js-refs-are-undefined-even-though-this-refs-shows-theyre-there
+      if (this.$refs['workoutList']) {
+        const el = this.$refs.workoutList;
+        const sortable = Sortable.create(el, {
+          onUpdate: function(evt) {
+            console.log(evt)
+          }
+        });
+      }
+
       this.selectedRoutine = obj;
     },
+
     closeRoutine() {
       this.selectedRoutine = {
         id: '',
