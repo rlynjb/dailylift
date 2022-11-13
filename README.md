@@ -14,7 +14,7 @@
 - DONE: implement delete routine
 - DONE: fix edge cases with adding workout and switching routines and creating new routine
 - DONE: leave add workout card out instead of toggling for simpler ui/ux
-- WIP: implement able to re-order workouts
+- DONE: implement able to re-order workouts
 - add simple login system, only i can access
 - sort workout items base on latest added
 - if workout has been updated, update workout in routine as well
@@ -22,6 +22,7 @@
 - possibly a search feature as well
 - shorten base64
 - auto resize input/text area fields
+- fix routine workout sorting bug update
 
 
 
