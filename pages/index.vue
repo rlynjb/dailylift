@@ -51,7 +51,8 @@
         <div class="todays-workout__item"
           v-for="(exercise, exerciseIndex) in selectedRoutine.workouts" :key="'e'+exerciseIndex">
           <div class="main-order">
-            <b>{{ exerciseIndex + 1 }}</b>
+            <b class="routine-workout_item_handle">{{ exerciseIndex + 1 }}</b>
+            <br/>
             <br/>
             <br/>
             <a class="main-unsetWorkoutBtn" @click="unsetWorkout(exerciseIndex)">
@@ -157,6 +158,7 @@ export default Vue.extend({
       if (this.$refs['workoutList']) {
         const el: any = that.$refs.workoutList;
         const sortable = Sortable.create(el, {
+          handle: ".routine-workout_item_handle",
           onChange: function(evt: any) {
             // find object from list and use id and index to update list
             //console.log(evt.oldIndex, evt.newIndex)
