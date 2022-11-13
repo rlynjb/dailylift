@@ -155,7 +155,8 @@ export default Vue.extend({
 
       // fix for refs undefined: https://stackoverflow.com/questions/54355375/vue-js-refs-are-undefined-even-though-this-refs-shows-theyre-there
       if (this.$refs['workoutList']) {
-        const sortable = Sortable.create(that.$refs.workoutList, {
+        const el: any = that.$refs.workoutList;
+        const sortable = Sortable.create(el, {
           onChange: function(evt: any) {
             // find object from list and use id and index to update list
             //console.log(evt.oldIndex, evt.newIndex)
