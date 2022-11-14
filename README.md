@@ -19,9 +19,7 @@
 - DONE: workout fields isnt updating that are in routine (update fields in both workouts and routines list)
 - add simple login system, only i can access
 - sort workout items base on latest added
-- if workout has been updated, update workout in routine as well
-- add a sort/filter feature by equipment, muscle worked
-- possibly a search feature as well
+- add a sort/filter feature by equipment, muscle worked, possibly a search feature as well
 - shorten base64
 - auto resize input/text area fields
 - fix routine workout sorting bug update
