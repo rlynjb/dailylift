@@ -263,6 +263,7 @@ export default Vue.extend({
         data
       )
       .then(res => {
+        this.updateRoutine(null, this.selectedRoutine);
         this.notifyMsg = `Workout UPDATED`;
       })
       .catch(err => {

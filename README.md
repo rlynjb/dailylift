@@ -16,6 +16,7 @@
 - DONE: leave add workout card out instead of toggling for simpler ui/ux
 - DONE: implement able to re-order workouts
 - DONE: when adding workout and removing, routine does not update
+- DONE: workout fields isnt updating that are in routine (update fields in both workouts and routines list)
 - add simple login system, only i can access
 - sort workout items base on latest added
 - if workout has been updated, update workout in routine as well
