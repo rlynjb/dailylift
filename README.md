@@ -17,9 +17,9 @@
 - DONE: implement able to re-order workouts
 - DONE: when adding workout and removing, routine does not update
 - DONE: workout fields isnt updating that are in routine (update fields in both workouts and routines list)
-- add simple login system, only i can access
+- filter workouts by muscle
 - sort workout items base on latest added
-- add a sort/filter feature by equipment, muscle worked, possibly a search feature as well
+- add simple login system, only i can access
 - shorten base64
 - auto resize input/text area fields
 - fix routine workout sorting bug update
