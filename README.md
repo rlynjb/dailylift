@@ -15,6 +15,7 @@
 - DONE: fix edge cases with adding workout and switching routines and creating new routine
 - DONE: leave add workout card out instead of toggling for simpler ui/ux
 - DONE: implement able to re-order workouts
+- DONE: when adding workout and removing, routine does not update
 - add simple login system, only i can access
 - sort workout items base on latest added
 - if workout has been updated, update workout in routine as well
@@ -40,6 +41,7 @@
 - superset (be able to link 2 workouts)
 - add different view mode, Show Details, Circuit Mode, Rest Mode
 - add UPDATE DELETE Image Field
+- add Timer
 
 
 # dailylift

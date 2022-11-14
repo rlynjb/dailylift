@@ -1,0 +1,1 @@
+window.__NUXT__=(function(a,b){return {staticAssetsBase:"\u002F_nuxt\u002Fstatic\u002F1668462947",layout:"default",error:a,serverRendered:true,routePath:b,config:{axios:{baseURL:"https:\u002F\u002Feuphonious-liger-57e9ae.netlify.app\u002F"},_app:{basePath:b,assetsPath:"\u002F_nuxt\u002F",cdnURL:a}},globalRefs:{}}}(null,"\u002F"));

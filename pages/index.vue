@@ -318,10 +318,13 @@ export default Vue.extend({
     },
     setWorkout(val: any) {
       this.selectedRoutine.workouts.push(val);
+      this.updateRoutine(null, this.selectedRoutine);
+
       this.notifyMsg = `Workout Added to Routine`;
     },
     unsetWorkout(index: number) {
       this.selectedRoutine.workouts.splice(index, 1);
+      this.updateRoutine(null, this.selectedRoutine);
     },
   },
 })
