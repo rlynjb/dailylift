@@ -64,37 +64,27 @@
           <WorkoutCard
             :exercise="exercise"
             @input="updateWorkout"
+            @deleteNote="deleteWorkout"
+            @setNote="setWorkout"
           />
         </div>
       </div>
     </div>
 
     <div class="main">
-      <div class="main-card">
-        <WorkoutCard
-          @input="createWorkout"
-        />
-      </div>
+      <WorkoutCard
+        @input="createNote"
+        @deleteNote="deleteWorkout"
+        @setNote="setWorkout"
+      />
 
       <div class="main-card"
         v-for="(exercise, exerciseIndex) in exercises" :key="'e'+exerciseIndex">
-        <div class="main-card__options">
-          <a class="main-setWorkoutBtn" @click="setWorkout(exercise)">
-            <span class="material-symbols-outlined">
-              add
-            </span>
-          </a>
-          <a class="main-deleteBtn"
-            @click="deleteWorkout(exercise)">
-            <span class="material-symbols-outlined">
-              delete
-            </span>
-          </a>
-        </div>
-
         <WorkoutCard
           :exercise="exercise"
           @input="updateWorkout"
+          @deleteNote="deleteWorkout"
+          @setNote="setWorkout"
         />
       </div>
     </div>
@@ -114,7 +104,6 @@ export default Vue.extend({
   data: () => {
     return {
       exercises: Workouts,
-      //todaysWorkout: [] as any[],
       displayAddWorkoutForm: false,
       notifyMsg: '',
       selectedRoutine: {
@@ -136,17 +125,6 @@ export default Vue.extend({
   created() {
     this.debounceCreateRoutine = debounce(this.debounceCreateRoutine, 2000);
   },
-
-  /*
-  watch: {
-    "selectedRoutine": {
-      handler(val) {
-        this.updateRoutine(null, val);
-      },
-      deep: true,
-    }
-  },
-  */
 
   methods: {
     loadRoutine(obj: any) {
@@ -220,7 +198,7 @@ export default Vue.extend({
       });
     },
 
-    async createWorkout(data: any) {
+    async createNote(data: any) {
       return await this.$axios.$post(
         '/.netlify/functions/create_workout',
         JSON.stringify(data)
@@ -372,25 +350,10 @@ export default Vue.extend({
   @apply grid sm:grid-cols-2 lg:grid-cols-4 gap-5 p-4;
 }
 .main-card {
-  @apply grid grid-cols-12;
+  @apply col-span-2;
 }
 .workout-card {
-  @apply col-span-11;
-}
-.main-card__options {
-  @apply col-span-1;
-}
-.main-setWorkoutBtn {
-  @apply mb-8;
-  display: block;
-}
-.main-setWorkoutBtn.disable {
-  pointer-events: none;
-  background: grey;
-}
-.main-deleteBtn {
-  @apply place-self-end;
-  cursor: pointer;
+  @apply col-span-2;
 }
 
 .todays-workout__item {

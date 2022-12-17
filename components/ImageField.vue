@@ -7,7 +7,9 @@
     <label v-else class="file-upload">
       <input type="file" id="myFile" name="filename"
         @input="setImage">
-      <img src="~/assets/images/kirby.jpg" />
+      <span class="material-symbols-outlined">
+        add_photo_alternate
+      </span>
     </label>
   </div>
 </template>

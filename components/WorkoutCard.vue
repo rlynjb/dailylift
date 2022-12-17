@@ -1,101 +1,41 @@
 <template>
   <div class="workout-card">
+      <InputField
+        class="workout-card__input workout-card__title"
+        label="Title"
+        :val="exercise.name"
+        @input="update"
+        placeholder="Title"
+        rows="1"
+      />
+      <InputField
+        class="workout-card__input workout-card__content"
+        label="content"
+        :val="exercise.muscles"
+        @input="update"
+        placeholder="Desc"
+        rows="2"
+      />
+
     <ImageField class="workout-card__image"
       label="image"
       v-model="exercise.image"
       @input="update"
     />
 
-    <h3 class="workout-card__title">
-      <InputField
-        class="workout-card__input"
-        label="name"
-        :val="exercise.name"
-        @input="update"
-        placeholder="Name of Workout"
-      />
-      <small>
-        <InputField
-          class="workout-card__input"
-          label="muscles"
-          :val="exercise.muscles"
-          @input="update"
-          placeholder="ex. Abs, Bicep, Tricep, Glutes, etc"
-        />
-      </small>
-      <small>
-        <InputField
-          class="workout-card__input"
-          placeholder="ex. set1-10reps, set2-10reps, 2x10"
-          :val="exercise.sets"
-          label="sets"
-          @input="update"
-        />
-      </small>
-    </h3>
-
-    <!--
-    <button class="detailBtn" @click="() => toggleDetail = !toggleDetail">Detail</button>
-
-    <div class="workout-card__content"
-      v-if="toggleDetail">
-      <div class="workout-card__reps">
-      <h6 class="workout-card__label">Sets</h6>
-      <InputField
-        class="workout-card__input"
-        label="set1"
-        :val="exercise.set1"
-        @input="update"
-      />
-      <InputField
-        class="workout-card__input"
-        label="set2"
-        :val="exercise.set2"
-        @input="update"
-      />
-      <InputField
-        class="workout-card__input"
-        label="set3"
-        :val="exercise.set3"
-        @input="update"
-      />
-
-      <h6 class="workout-card__label">Weight</h6>
-      <InputField
-        class="workout-card__input"
-        label="weight1"
-        :val="exercise.weight1"
-        @input="update"
-      />
-      <InputField
-        class="workout-card__input"
-        label="weight2"
-        :val="exercise.weight2"
-        @input="update"
-      />
-      <InputField
-        class="workout-card__input"
-        label="weight3"
-        :val="exercise.weight3"
-        @input="update"
-      />
-
-      <h6 class="workout-card__label">Time</h6>
-      <InputField
-        class="workout-card__input"
-        label="minutes"
-        :val="exercise.minutes"
-        @input="update"
-      />
-      <InputField
-        class="workout-card__input"
-        label="seconds"
-        :val="exercise.seconds"
-        @input="update"
-      />
-      </div>
+    <div class="main-card__options">
+      <a class="main-deleteBtn"
+        @click="deleteWorkout(exercise)">
+        <span class="material-symbols-outlined">
+          delete
+        </span>
+      </a>
+      <a class="main-setWorkoutBtn" @click="setWorkout(exercise)">
+        <span class="material-symbols-outlined">
+          add
+        </span>
+      </a>
     </div>
-    -->
   </div>
 </template>
 
@@ -152,42 +92,48 @@ export default Vue.extend({
       this.$set(this.exercise, obj.label, obj.val);
       this.$emit('input', this.exercise);
     },
+    deleteWorkout(obj: any) {
+      this.$emit('deleteNote', obj);
+    },
+    setWorkout(obj: any) {
+      this.$emit('setNote', obj);
+    },
   },
 })
 </script>
 
 <style lang="postcss" scoped>
 .workout-card {
-  @apply grid grid-cols-12 p-4 gap-3 bg-primary;
-}
-.workout-card__image {
-  @apply col-span-5;
+  @apply grid grid-cols-12 p-4 gap-3;
+  border: 1px solid #dfdfdf;
+  border-radius: 5px;
 }
 .workout-card__title {
-  @apply col-span-7;
+  @apply col-span-12;
   line-height: 1.3;
-  font-size: 0.7em;
+  font-size: 0.8em;
 }
-.workout-card__title small {
-  @apply mt-1;
-  font-size: 0.6em;
+.workout-card__content{
+  @apply col-span-12 mt-1;
+  font-size: 0.9em;
   display: block;
 }
-.detailBtn {
-  background: #e2e2e2;
-  width: fit-content;
-  padding: 0.2em 1em;
+.workout-card__image {
+  @apply col-span-12;
 }
-.workout-card__content {
-  @apply col-span-12 grid grid-cols-2;
+.main-card__options {
+  @apply col-span-12 grid grid-cols-12;
 }
-.workout-card__reps {
-  @apply col-span-12 grid grid-cols-3 gap-2;
-}
-.workout-card__label {
-  @apply col-span-3;
-}
-.workout-card__input {
+.main-setWorkoutBtn {
   @apply col-span-1;
+  display: block;
+}
+.main-setWorkoutBtn.disable {
+  pointer-events: none;
+  background: grey;
+}
+.main-deleteBtn {
+  @apply col-span-1;
+  cursor: pointer;
 }
 </style>

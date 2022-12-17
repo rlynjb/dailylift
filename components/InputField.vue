@@ -1,6 +1,6 @@
 <template>
   <div class="input-field-container">
-    <textarea rows="2"
+    <textarea :rows="rows"
       class="input-field"
       :placeholder="placeholder"
       :value="val"
@@ -23,6 +23,10 @@ export default Vue.extend({
     label: String,
     val: String,
     placeholder: String,
+    rows: {
+      type: Number,
+      default: () => 2,
+    },
   },
   methods: {
     update(key: any, val: any) {
@@ -36,6 +40,7 @@ export default Vue.extend({
 .input-field {
   padding: 0.1em 0.4em;
   width: 100%;
+  background: none;
 }
 .input-field:focus-visible {
   outline: none;
