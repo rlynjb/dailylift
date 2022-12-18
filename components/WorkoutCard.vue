@@ -1,21 +1,21 @@
 <template>
   <div class="workout-card">
-      <InputField
-        class="workout-card__input workout-card__title"
-        label="Title"
-        :val="exercise.name"
-        @input="update"
-        placeholder="Title"
-        rows="1"
-      />
-      <InputField
-        class="workout-card__input workout-card__content"
-        label="content"
-        :val="exercise.muscles"
-        @input="update"
-        placeholder="Desc"
-        rows="2"
-      />
+    <InputField
+      class="workout-card__input workout-card__title"
+      label="title"
+      :val="exercise.title"
+      @input="update"
+      placeholder="Title"
+      rows="1"
+    />
+    <InputField
+      class="workout-card__input workout-card__content"
+      label="content"
+      :val="exercise.content"
+      @input="update"
+      placeholder="Desc"
+      rows="2"
+    />
 
     <ImageField class="workout-card__image"
       label="image"
@@ -23,7 +23,8 @@
       @input="update"
     />
 
-    <div class="main-card__options">
+    <div class="main-card__options"
+      v-if="exercise.title">
       <a class="main-deleteBtn"
         @click="deleteWorkout(exercise)">
         <span class="material-symbols-outlined">

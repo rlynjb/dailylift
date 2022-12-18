@@ -24,8 +24,8 @@ export default Vue.extend({
     val: String,
     placeholder: String,
     rows: {
-      type: Number,
-      default: () => 2,
+      type: String,
+      default: () => "2",
     },
   },
   methods: {
